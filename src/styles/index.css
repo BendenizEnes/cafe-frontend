@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background:#EEF4F7;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+:root{
+    height: 100vh;
+}
