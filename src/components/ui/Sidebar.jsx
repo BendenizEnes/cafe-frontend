@@ -4,9 +4,10 @@ import { MdOutlineTableBar} from "react-icons/md";
 import { LuCalendarDays } from "react-icons/lu";
 import { FaRegBuilding } from "react-icons/fa";
 import { useState} from "react";
-import {IoIosArrowForward} from "react-icons/io";
+import {IoIosArrowForward, IoIosArrowBack} from "react-icons/io";
 
 function Sidebar() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true)
     const [activeMenu, setActiveMenu] = useState(0);
     const toggleSubMenu = (itemId) => {setActiveMenu(activeMenu === itemId ? 0 : itemId);};
 
@@ -60,37 +61,49 @@ function Sidebar() {
     ];
 
     return (
-        <div className="text-gray-500 font-[500] bg-white fixed top-[100px] left-5 bottom-5 py-5 w-60 rounded-2xl shadow-md shadow-gray-100 Z-10">
+        <div className={`text-gray-500 font-[500] bg-white ${isSidebarOpen ? "w-60" : "w-20"}  rounded-2xl shadow-md transition-all duration-500 ease-in-out`}>
+                <div className="toggle-button-container w-full h-14 relative">
+                    <div className="toggle-button absolute top-5 right-[-18px] border-[6px] border-[#e2efff] rounded-full">
+                        <button className=" text-white p-[5px] bg-blue-300 rounded-full" onClick={ () => setIsSidebarOpen(!isSidebarOpen)}>
+                            {isSidebarOpen ?  <IoIosArrowBack/> : <IoIosArrowForward/>}
+                        </button>
+                    </div>
+                </div>
             {asideData.map((item) => {
                 return(
                     <div key={item.id}>
                         {item.url ? (
                             <NavLink to={item.url} className="flex items-center gap-5" onClick={checkLocation}>
-                                <div className="p-3 pl-6 text-2xl icon rounded-r-full">
+                                <div className="p-3 pl-7 text-2xl icon rounded-r-full">
                                     {item.icon}
                                 </div>
-                                <div>
-                                    {item.name}
+                                <div className="overflow-hidden transition-all duration-1000">
+                                    {isSidebarOpen ? item.name : ""}
+                                </div>
+                                <div className=" overflow-hidden bg-transparent flex justify-end pr-8 z-0">
                                 </div>
                             </NavLink>) : (
                             <div>
-                                <div className="flex items-center gap-5 cursor-pointer dropdown" onClick={() => toggleSubMenu(item.id)}>
-                                    <div className="p-3 pl-6 text-2xl icon rounded-r-full">
+                                <div className="flex items-center gap-5 cursor-pointer dropdown"
+                                     onClick={() => toggleSubMenu(item.id)}>
+                                    <div className="p-3 pl-7 text-2xl icon rounded-r-full">
                                         {item.icon}
                                     </div>
-                                    <div className="flex items-center gap-5">
-                                        {item.name}
+                                    <div className="overflow-hidden">
+                                        {isSidebarOpen ? item.name : ""}
                                     </div>
-                                    <div className="flex-1 flex justify-end pr-10">
-                                        <IoIosArrowForward className={`duration-300 ${activeMenu === item.id ? "rotate-90" : ""}`}/>
+                                    <div className=" overflow-hidden bg-transparent flex justify-end pr-8">
+                                        {
+                                            isSidebarOpen ? <IoIosArrowForward className={`duration-300 ${activeMenu === item.id ? "rotate-90" : ""}`}/> : ""
+                                        }
+
                                     </div>
                                 </div>
-                                <div className={`${activeMenu === item.id ? "" : "hidden"} duration-500`}>
+                                <div className={`${activeMenu === item.id ? "" : "hidden"} ${isSidebarOpen ? "" : "hidden"} flex flex-col items-start`}>
                                     {item.attributes.map((subItem) => (
-                                        <NavLink to={subItem.url} key={subItem.id} className="h-10 gap-5 p-3 cursor-pointer" onClick={checkLocation}>
-                                            <span className="w-12 h-full"></span>
-                                            <span className="text-sm">
-                                                {subItem.name}
+                                        <NavLink to={subItem.url} key={subItem.id} className="h-10 gap-5 p-1 cursor-pointer" onClick={checkLocation}>
+                                            <span className="text-sm pl-16 w-full overflow-hidden">
+                                                {isSidebarOpen ? subItem.name : ""}
                                             </span>
                                         </NavLink>
                                     ))}
