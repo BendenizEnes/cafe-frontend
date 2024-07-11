@@ -4,3 +4,23 @@
 .active .icon{
     background: #DCF6FF;
 }
+
+::-webkit-scrollbar {
+    width: 10px; /* Scrollbar'ın genişliği */
+}
+
+/* Scrollbar arka planı */
+::-webkit-scrollbar-track {
+    background: #c6d3e3; /* Arka plan rengi */
+}
+
+/* Scrollbar başparmak (kaydırma kutusu) */
+::-webkit-scrollbar-thumb {
+    background: #98bad5; /* Kaydırma kutusu rengi */
+    border-radius: 10px; /* Kenar yuvarlama */
+}
+
+/* Scrollbar başparmak üzerine gelindiğinde */
+::-webkit-scrollbar-thumb:hover {
+    background: #304674; /* Kaydırma kutusu üzerine gelindiğinde rengi */
+}
