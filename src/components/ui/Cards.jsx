@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import {MdOutlineRoomService} from "react-icons/md";
+import {Card} from "@/components/ui/card.jsx";
 
 function Cards({icon, title, variant, children}) {
     const CardVariant = {
@@ -25,7 +26,7 @@ function Cards({icon, title, variant, children}) {
         },
     };
     return (
-        <div className="p-5 flex-1 flex items-center bg-white rounded-2xl gap-5 shadow-md ">
+        <div className="p-5 flex-1 flex items-center bg-card rounded-2xl gap-5 shadow-md">
             <div className={`${CardVariant[variant].textCol} ${CardVariant[variant].bgColor} text-4xl p-3 rounded-lg`}>
                 {icon}
             </div>

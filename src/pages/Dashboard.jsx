@@ -2,7 +2,7 @@ import Layout from "../components/ui/Layout.jsx";
 import Cards from "../components/ui/Cards.jsx";
 import {Area, Bar, BarChart, CartesianGrid, XAxis, AreaChart, YAxis, Label, Pie, PieChart,} from "recharts"
 import { ChartContainer,ChartTooltip,ChartTooltipContent,ChartLegend, ChartLegendContent } from "@/components/ui/chart"
-import {CardFooter} from "@/components/ui/card.jsx";
+import {Card, CardFooter} from "@/components/ui/card.jsx";
 import {TrendingUp, ArrowUpDown} from "lucide-react"
 import {useMemo} from "react";
 import DataTable from "@/components/ui/DataTable.jsx";
@@ -235,8 +235,9 @@ function Dashboard() {
             accessorKey: "name",
             header: (({column}) =>
                 <Button
+                    variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className=" m-1 px-1 bg-white shadow-none hover:text-white hover:bg-[#304674]  font-[700] text-[#555]"
+                    className="w-full"
                 >
                     Name <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>),
@@ -245,8 +246,9 @@ function Dashboard() {
             accessorKey: "company",
             header: (({column}) =>
                 <Button
+                    variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className=" m-1 px-1 bg-white shadow-none hover:text-white hover:bg-[#304674]  font-[700] text-[#555]"
+                    className="w-full"
                 >
                     Company <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>),
@@ -255,8 +257,9 @@ function Dashboard() {
             accessorKey: "email",
             header: (({column}) =>
                 <Button
+                    variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="m-1 px-1 bg-white shadow-none hover:text-white hover:bg-[#304674]  font-[700] text-[#555]"
+                    className="w-full"
                 >
                     Email <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>),
@@ -265,8 +268,9 @@ function Dashboard() {
             accessorKey: "phone",
             header: (({column}) =>
                 <Button
+                    variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className=" m-1 px-1 bg-white shadow-none hover:text-white hover:bg-[#304674]  font-[700] text-[#555]"
+                    className="w-full"
                 >
                     Phone <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>),
@@ -274,8 +278,9 @@ function Dashboard() {
             accessorKey: "paymentMethod",
             header: (({column}) =>
                 <Button
+                    variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className=" m-1 px-1 bg-white shadow-none hover:text-white hover:bg-[#304674]  font-[700] text-[#555]"
+                    className="w-full"
                 >
                     Payment Method <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>),
@@ -284,8 +289,9 @@ function Dashboard() {
             accessorKey: "status",
             header: (({column}) =>
                 <Button
+                    variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className=" m-1 px-1 bg-white shadow-none hover:text-white hover:bg-[#304674] font-[700] text-[#555]"
+                    className="w-full"
                 >
                     Status <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>),
@@ -314,43 +320,44 @@ function Dashboard() {
     return (
         <Layout>
             <main className="grid grid-cols-4 grid-rows-7 gap-5 h-[1050px]">
-                <div className="col-start-1 col-span-2 row-start-2 row-span-2 bg-white rounded-2xl shadow-md p-3">
+                <Card className="col-start-1 col-span-4 row-start-1 row-span-1 border-none bg-transparent shadow-none flex gap-5">
+                    <Cards title="başlık 1" variant="secondary" className="">Deneme A</Cards>
+                    <Cards title="başlık 2" variant="primary" className="bg-ring">Deneme B</Cards>
+                    <Cards title="başlık 3" variant="quaternary" className="bg-ring">Deneme C</Cards>
+                    <Cards title="başlık 4" variant="tertiary" className="bg-ring">Deneme D</Cards>
+                    <Cards title="başlık 5" variant="default" className="bg-ring">Deneme E</Cards>
+                </Card>
+                <Card className="col-start-1 col-span-2 row-start-2 row-span-2 border-none p-3 pl-0">
                     <ChartContainer config={chartConfig} className="h-full w-full">
                         <BarChart accessibilityLayer data={chartData}>
-                            <CartesianGrid/>
-                            <ChartTooltip content={<ChartTooltipContent className=""/>}/>
-                            <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false}
+                            <CartesianGrid vertical={false} stroke="var(--secondary)"/>
+                            <ChartTooltip content={<ChartTooltipContent className="bg-card"/>}/>
+                            <XAxis dataKey="month" tickLine={true} tickMargin={10} axisLine={true}
                                    tickFormatter={(value) => value.slice(0, 3)}/>
+                            <YAxis tickLine={false} tickMargin={5} axisLine={false}/>
                             <ChartLegend content={<ChartLegendContent/>}/>
                             <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4}/>
                             <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4}/>
                         </BarChart>
                     </ChartContainer>
-                </div>
-                <div className="col-start-3 col-span-2 row-start-2 row-span-2 bg-white rounded-2xl shadow-md p-3">
+                </Card>
+                <Card className="col-start-3 col-span-2 row-start-2 row-span-2 border-none p-5 pl-0">
                     <ChartContainer config={chartConfig} className="h-full w-full">
                         <AreaChart accessibilityLayer data={chartData} margin={{left: 12, right: 12,}}>
-                            <CartesianGrid vertical={false}/>
-                            <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8}
+                            <CartesianGrid vertical={false} stroke="var(--secondary)"/>
+                            <XAxis dataKey="month" tickLine={true} axisLine={true} tickMargin={10}
                                    tickFormatter={(value) => value.slice(0, 3)}/>
-                            <YAxis tickLine={false} axisLine={false} tickMargin={8} tickCount={3}/>
-                            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dot"/>}/>
-                            <Area dataKey="desktop" type="natural" fill="#98ddca" fillOpacity={0.4} stroke="#1A8D80"/>
-                            <Area dataKey="mobile" type="natural" fill="#df9191" fillOpacity={0.4} stroke="#D75E40"/>
+                            <YAxis tickLine={false} tickMargin={5} axisLine={false}/>
+                            <ChartTooltip content={<ChartTooltipContent className="bg-card"/>}/>
+                            <Area dataKey="desktop" type="natural" fill="var(--chart-7)" fillOpacity={0.93} stroke="var(--chart-7)"/>
+                            <Area dataKey="mobile"  type="natural" fill="var(--chart-6)" fillOpacity={0.93} stroke="var(--chart-6)"/>
 
                             <ChartLegend content={<ChartLegendContent/>}/>
                         </AreaChart>
                     </ChartContainer>
-                </div>
-                <div className="col-start-1  col-span-4 flex gap-5">
-                    <Cards title="başlık 1" variant="secondary">Deneme A</Cards>
-                    <Cards title="başlık 2" variant="primary">Deneme B</Cards>
-                    <Cards title="başlık 3" variant="quaternary">Deneme C</Cards>
-                    <Cards title="başlık 4" variant="tertiary">Deneme D</Cards>
-                    <Cards title="başlık 5" variant="default">Deneme E</Cards>
-                </div>
-                <div className="col-start-1 col-span-1 row-start-4 row-span-2 pt-1 shadow-md bg-white rounded-2xl ">
-                    <ChartContainer config={donutConfig} className="mx-auto aspect-square w-full flex-1">
+                </Card>
+                <Card className="col-start-1 col-span-1 row-start-4 row-span-2 border-none ">
+                    <ChartContainer config={donutConfig} className="h-full w-full flex-1">
                         <PieChart>
                             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel/>}/>
                             <Pie data={donutData} dataKey="visitors" nameKey="browser" innerRadius={80} strokeWidth={3}>
@@ -375,8 +382,8 @@ function Dashboard() {
                             </Pie>
                         </PieChart>
                     </ChartContainer>
-                </div>
-                <div className="col-start-1 col-span-1 row-start-6 row-span-2 pt-1 shadow-md bg-white rounded-2xl ">
+                </Card>
+                <Card className="col-start-1 col-span-1 row-start-6 row-span-2 border-none ">
                     <ChartContainer config={donutConfig} className="mx-auto mt-10 aspect-square w-4/5 h-24">
                         <AreaChart accessibilityLayer data={chartData}>
                             <defs>
@@ -409,10 +416,10 @@ function Dashboard() {
                             </div>
                         </div>
                     </CardFooter>
-                </div>
-                <div className="col-start-2 col-span-3 row-start-4 text-center row-span-4 overflow-hidden shadow-md bg-white rounded-2xl relative">
+                </Card>
+                <Card className="col-start-2 col-span-3 row-start-4 row-span-4 border-none text-center relative">
                     <DataTable columns={columns} data={users} className="h-full ]"/>
-                </div>
+                </Card>
             </main>
         </Layout>
     );

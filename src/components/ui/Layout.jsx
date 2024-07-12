@@ -1,17 +1,17 @@
 import Sidebar from "./Sidebar.jsx";
 import Header from "./Header.jsx";
+import {ThemeProvider} from "@/components/ui/theme-provider.jsx";
 
 // eslint-disable-next-line react/prop-types
 function Layout({children}) {
     return (
-        <div className="p-5 mt-20">
+        <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
             <Header/>
-            <div className="flex gap-5 flex-row">
+            <div className="flex gap-5 flex-row mt-[100px] m-5">
                 <Sidebar/>
                 {children}
             </div>
-
-        </div>
+        </ThemeProvider>
 
     );
 }

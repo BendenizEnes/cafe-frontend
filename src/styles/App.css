@@ -1,8 +1,17 @@
 .active{
     color:#1DBAFF;
 }
+
+.dark .active{
+    color: #91dcf8;
+}
+
 .active .icon{
     background: #DCF6FF;
+}
+
+.dark .active .icon{
+    background: #1DBAFF;
 }
 
 ::-webkit-scrollbar {
@@ -11,16 +20,16 @@
 
 /* Scrollbar arka planı */
 ::-webkit-scrollbar-track {
-    background: #c6d3e3; /* Arka plan rengi */
+    background: var(--scrollbar-bg); /* Arka plan rengi */
 }
 
 /* Scrollbar başparmak (kaydırma kutusu) */
 ::-webkit-scrollbar-thumb {
-    background: #98bad5; /* Kaydırma kutusu rengi */
-    border-radius: 10px; /* Kenar yuvarlama */
+    background: var(--scrollbar); /* Kaydırma kutusu rengi */
+    border-radius: 5px;/* Kenar yuvarlama */
 }
 
 /* Scrollbar başparmak üzerine gelindiğinde */
 ::-webkit-scrollbar-thumb:hover {
-    background: #304674; /* Kaydırma kutusu üzerine gelindiğinde rengi */
+    background: var(--secondary); /* Kaydırma kutusu üzerine gelindiğinde rengi */
 }

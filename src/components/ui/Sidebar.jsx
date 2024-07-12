@@ -5,6 +5,7 @@ import { LuCalendarDays } from "react-icons/lu";
 import { FaRegBuilding } from "react-icons/fa";
 import { useState} from "react";
 import {IoIosArrowForward, IoIosArrowBack} from "react-icons/io";
+import {Card} from "@/components/ui/card.jsx";
 
 function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true)
@@ -61,10 +62,10 @@ function Sidebar() {
     ];
 
     return (
-        <div className={`text-gray-500 font-[500] bg-white ${isSidebarOpen ? "w-60" : "w-20"}  rounded-2xl shadow-md transition-all duration-500 ease-in-out`}>
+        <Card className={`font-[500] ${isSidebarOpen ? "w-60" : "w-20"} transition-[width] duration-500 ease-in-out border-none`}>
                 <div className="toggle-button-container w-full h-14 relative">
-                    <div className="toggle-button absolute top-5 right-[-18px] border-[6px] border-[#e2efff] rounded-full">
-                        <button className=" text-white p-[5px] bg-blue-300 rounded-full" onClick={ () => setIsSidebarOpen(!isSidebarOpen)}>
+                    <div className="toggle-button absolute top-5 right-[-18px] rounded-full">
+                        <button className="text-white p-[5px] w-full h-full bg-[#1DBAFF] border-[6px] border-background rounded-full" onClick={ () => setIsSidebarOpen(!isSidebarOpen)}>
                             {isSidebarOpen ?  <IoIosArrowBack/> : <IoIosArrowForward/>}
                         </button>
                     </div>
@@ -113,7 +114,7 @@ function Sidebar() {
                     </div>
                 )
             })}
-        </div>
+        </Card>
     );
 }
 
