@@ -1,5 +1,5 @@
 import Layout from "../components/ui/Layout.jsx";
-import Cards from "../components/ui/Cards.jsx";
+import InfoCards from "../components/ui/InfoCards.jsx";
 import {Area, Bar, BarChart, CartesianGrid, XAxis, AreaChart, YAxis, Label, Pie, PieChart,} from "recharts"
 import { ChartContainer,ChartTooltip,ChartTooltipContent,ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 import {Card, CardFooter} from "@/components/ui/card.jsx";
@@ -321,11 +321,11 @@ function Dashboard() {
         <Layout>
             <main className="grid grid-cols-4 grid-rows-7 gap-5 h-[1050px]">
                 <Card className="col-start-1 col-span-4 row-start-1 row-span-1 border-none bg-transparent shadow-none flex gap-5">
-                    <Cards title="başlık 1" variant="secondary" className="">Deneme A</Cards>
-                    <Cards title="başlık 2" variant="primary" className="bg-ring">Deneme B</Cards>
-                    <Cards title="başlık 3" variant="quaternary" className="bg-ring">Deneme C</Cards>
-                    <Cards title="başlık 4" variant="tertiary" className="bg-ring">Deneme D</Cards>
-                    <Cards title="başlık 5" variant="default" className="bg-ring">Deneme E</Cards>
+                    <InfoCards title="başlık 1" variant="secondary" className="">Deneme A</InfoCards>
+                    <InfoCards title="başlık 2" variant="primary" className="bg-ring">Deneme B</InfoCards>
+                    <InfoCards title="başlık 3" variant="quaternary" className="bg-ring">Deneme C</InfoCards>
+                    <InfoCards title="başlık 4" variant="tertiary" className="bg-ring">Deneme D</InfoCards>
+                    <InfoCards title="başlık 5" variant="default" className="bg-ring">Deneme E</InfoCards>
                 </Card>
                 <Card className="col-start-1 col-span-2 row-start-2 row-span-2 border-none p-3 pl-0">
                     <ChartContainer config={chartConfig} className="h-full w-full">

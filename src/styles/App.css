@@ -10,6 +10,8 @@
     background: #DCF6FF;
 }
 
+
+
 .dark .active .icon{
     background: #1DBAFF;
 }
@@ -31,5 +33,5 @@
 
 /* Scrollbar başparmak üzerine gelindiğinde */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary); /* Kaydırma kutusu üzerine gelindiğinde rengi */
+    background: var(--scrollbar-hover); /* Kaydırma kutusu üzerine gelindiğinde rengi */
 }

@@ -24,7 +24,7 @@
     --accent-foreground: hsl(240 5.9% 10%);
     --destructive: hsl(0 84.2% 60.2%);
     --destructive-foreground: hsl(0 0% 98%);
-    --border:#ddd;
+    --border:#bbb;
     --input: #ddd;
     --ring: hsl(240 10% 3.9%);
     --radius: 0.5rem;
@@ -37,18 +37,21 @@
     --chart-7: #C6D3E3;
     --scrollbar-bg:#C6D3E3;
     --scrollbar:#304674;
+    --scrollbar-hover: #102654 ;
+    --button-1: #304674;
+    --button-1-foreground:#eee
   }
 
   .dark {
-    --background: #1a1a1a;
+    --background: #1c2025;
     --foreground: #ccc;
-    --card: #272727;
+    --card: #292D32;
     --card-foreground:#ccc;
     --popover: #222;
     --popover-foreground: hsl(0 0% 98%);
     --primary: hsl(0 0% 98%);
     --primary-foreground: hsl(240 5.9% 10%);
-    --secondary: hsl(240, 4%, 20%);
+    --secondary: #666;
     --secondary-foreground: hsl(0 0% 98%);
     --muted: hsl(240 3.7% 15.9%);
     --muted-foreground: hsl(240 5% 64.9%);
@@ -56,7 +59,7 @@
     --accent-foreground: #fff;
     --destructive: hsl(0 62.8% 30.6%);
     --destructive-foreground: hsl(0 0% 98%);
-    --border: #1a1a1a;
+    --border: #444;
     --input: #666;
     --ring: hsl(240 4.9% 83.9%);
     --chart-1: hsl(220 70% 50%);
@@ -66,8 +69,12 @@
     --chart-5: hsl(340 75% 55%);
     --chart-6: #304674;
     --chart-7: #C6D3E3;
-    --scrollbar-bg: #191919;
+    --scrollbar-bg: #1d212e;
     --scrollbar:#999;
+    --scrollbar-hover: #777 ;
+    --button-1: #a7c3fb;
+    --button-1-foreground:#304674;
+
   }
 }
 

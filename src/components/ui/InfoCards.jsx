@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import {MdOutlineRoomService} from "react-icons/md";
 import {Card} from "@/components/ui/card.jsx";
 
-function Cards({icon, title, variant, children}) {
+function InfoCards({icon, title, variant, children}) {
     const CardVariant = {
         primary: {
             textCol: "text-[#54CCA1]",
@@ -38,16 +38,16 @@ function Cards({icon, title, variant, children}) {
     );
 }
 
-Cards.propTypes = {
+InfoCards.propTypes = {
     title: PropTypes.string.isRequired,
     icon: PropTypes.element,
     children : PropTypes.node,
     variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary',"quaternary","default"]),
 };
 
-Cards.defaultProps = {
+InfoCards.defaultProps = {
     icon:<MdOutlineRoomService/>,
     variant : "default"
 }
 
-export default Cards;
+export default InfoCards;
