@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard.jsx";
 import Security from "./Security.jsx";
 import Settings from "./Settings.jsx";
 import Billing from "@/pages/Billing.jsx";
+import Tables from "@/pages/Tables.jsx";
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <Route path="/account/settings" element={<Settings/>}></Route>
         <Route path="/account/security" element={<Security/>}></Route>
         <Route path="/account/billing" element={<Billing/>}></Route>
-      <Route path="/calendar"></Route>
+      <Route path="/tables" element={<Tables/>}></Route>
     </Routes>
   )
 }
