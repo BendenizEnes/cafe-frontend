@@ -1,16 +1,16 @@
-import Layout from "@/components/ui/Layout.jsx";
-import {Card} from "@/components/ui/card.jsx";
-import {Button} from "@/components/ui/button.jsx";
+import Layout from "../components/ui/Layout.jsx";
+import {Card} from "../components/ui/card.jsx";
+import {Button} from "../components/ui/button.jsx";
+import Account from "../components/ui/Account.jsx";
+import {Label} from "../components/ui/label.jsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "../components/ui/form.jsx"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx"
-import { Input } from "@/components/ui/input.jsx"
+import { Input } from "../components/ui/input.jsx"
 import {Link} from "react-router-dom";
 import {BiSolidHide, BiSolidShow} from "react-icons/bi";
 import {useState} from "react";
-import Account from "@/components/ui/Account.jsx";
-import {Label} from "@/components/ui/label.jsx";
 
 // import {NavLink} from "react-router-dom";
 function Security() {

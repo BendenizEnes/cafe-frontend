@@ -1,10 +1,8 @@
 import {NavLink} from "react-router-dom";
-import { RxDashboard } from "react-icons/rx";
 import { MdOutlineTableBar} from "react-icons/md";
-import { LuCalendarDays } from "react-icons/lu";
-import { FaRegBuilding } from "react-icons/fa";
+import {TbBuilding, TbCalendarMonth, TbChevronLeft, TbChevronRight, TbLayoutGrid} from "react-icons/tb";
 import { useState} from "react";
-import {IoIosArrowForward, IoIosArrowBack} from "react-icons/io";
+
 import {Card} from "@/components/ui/card.jsx";
 
 function Sidebar() {
@@ -27,19 +25,19 @@ function Sidebar() {
         {
             id: 1,
             name: "Dashboard",
-            icon: <RxDashboard/>,
+            icon: <TbLayoutGrid className="dark:text-white"/>,
             url: "/dashboard",
         },
         {
             id: 2,
             name: "Calendar",
-            icon: <LuCalendarDays/>,
+            icon: <TbCalendarMonth className="dark:text-white"/>,
             url: "/calendar",
         },
         {
             id: 3,
             name: "Company",
-            icon: <FaRegBuilding/>,
+            icon: <TbBuilding className="dark:text-white"/>,
             attributes: [
                 {
                     id: 1,
@@ -56,7 +54,7 @@ function Sidebar() {
         {
             id: 4,
             name: "Tables",
-            icon: <MdOutlineTableBar/>,
+            icon: <MdOutlineTableBar className="dark:text-white"/>,
             url: "/tables",
         },
     ];
@@ -69,7 +67,8 @@ function Sidebar() {
                             setIsSidebarOpen(!isSidebarOpen)
                             setActiveMenu(false)
                         }}>
-                            {isSidebarOpen ?  <IoIosArrowBack/> : <IoIosArrowForward/>}
+                            {isSidebarOpen ?  <TbChevronLeft /> : <TbChevronRight />
+                            }
                         </button>
                     </div>
                 </div>
@@ -88,13 +87,13 @@ function Sidebar() {
                             <div>
                                 <div className="flex items-center gap-5 cursor-pointer dropdown"
                                      onClick={() => toggleSubMenu(item.id)}>
-                                    <div className="p-3 pl-7 text-2xl icon rounded-r-full">
+                                    <div className="p-3 pr-2 pl-7 text-2xl icon rounded-r-full">
                                         {item.icon}
                                     </div>
                                     <div
                                         className={`overflow-hidden transition-all flex-row flex gap-5 items-center duration-1000 ${isSidebarOpen ? "w-full" : "w-0"}`}>
                                         {item.name}
-                                           <IoIosArrowForward className={`duration-300 mr-6 ${activeMenu === item.id ? "rotate-90" : ""} ${isSidebarOpen ? "" : "w-0"}`}/>
+                                           <TbChevronRight className={`duration-300 mr-6 ${activeMenu === item.id ? "rotate-90" : ""} ${isSidebarOpen ? "" : "w-0"}`}/>
                                     </div>
 
                                 </div>
@@ -102,7 +101,7 @@ function Sidebar() {
                                     className={`${activeMenu === item.id ? "" : "hidden"} flex flex-col items-start`}>
                                     {item.attributes.map((subItem) => (
                                         <NavLink to={subItem.url} key={subItem.id} className="h-10 gap-5 p-1 cursor-pointer" onClick={checkLocation}>
-                                            <span className="text-sm pl-20 w-full overflow-hidden">
+                                            <span className="text-sm pl-[72px] w-full overflow-hidden">
                                                 {isSidebarOpen ? subItem.name : ""}
                                             </span>
                                         </NavLink>

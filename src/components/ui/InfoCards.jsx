@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import {MdOutlineRoomService} from "react-icons/md";
-import {Card} from "@/components/ui/card.jsx";
+import {MdRoomService} from "react-icons/md";
 
 function InfoCards({icon, title, variant, children}) {
     const CardVariant = {
@@ -46,7 +45,7 @@ InfoCards.propTypes = {
 };
 
 InfoCards.defaultProps = {
-    icon:<MdOutlineRoomService/>,
+    icon:<MdRoomService/>,
     variant : "default"
 }
 

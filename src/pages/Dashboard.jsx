@@ -1,14 +1,12 @@
 import Layout from "../components/ui/Layout.jsx";
 import InfoCards from "../components/ui/InfoCards.jsx";
+import DataTable from "../components/ui/DataTable.jsx";
+import {Button} from "../components/ui/button.jsx";
+import {Card, CardFooter} from "../components/ui/card.jsx";
+import { ChartContainer,ChartTooltip,ChartTooltipContent,ChartLegend, ChartLegendContent } from "../components/ui/chart"
 import {Area, Bar, BarChart, CartesianGrid, XAxis, AreaChart, YAxis, Label, Pie, PieChart,} from "recharts"
-import { ChartContainer,ChartTooltip,ChartTooltipContent,ChartLegend, ChartLegendContent } from "@/components/ui/chart"
-import {Card, CardFooter} from "@/components/ui/card.jsx";
-import {TrendingUp, ArrowUpDown} from "lucide-react"
+import {TbArrowsUpDown, TbTrendingUp} from "react-icons/tb";
 import {useMemo} from "react";
-import DataTable from "@/components/ui/DataTable.jsx";
-import {Button} from "@/components/ui/button.jsx";
-
-
 
 function Dashboard() {
 
@@ -239,7 +237,7 @@ function Dashboard() {
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="w-full"
                 >
-                    Name <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Name <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
         },
         {
@@ -250,7 +248,7 @@ function Dashboard() {
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="w-full"
                 >
-                    Company <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Company <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
         },
         {
@@ -261,7 +259,7 @@ function Dashboard() {
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="w-full"
                 >
-                    Email <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Email <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
         },
         {
@@ -272,7 +270,7 @@ function Dashboard() {
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="w-full"
                 >
-                    Phone <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Phone <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
         },{
             accessorKey: "paymentMethod",
@@ -282,7 +280,7 @@ function Dashboard() {
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="w-full"
                 >
-                    Payment Method <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Payment Method <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
         },
         {
@@ -293,7 +291,7 @@ function Dashboard() {
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="w-full"
                 >
-                    Status <ArrowUpDown className="ml-2 h-4 w-4" />
+                    Status <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
             cell:( ({row}) => {
                     const status = row.getValue("status")
@@ -315,7 +313,6 @@ function Dashboard() {
 
 
     ]
-
 
     return (
         <Layout>
@@ -408,7 +405,7 @@ function Dashboard() {
                         <div className="flex w-full mt-14 items-start gap-2 text-sm">
                             <div className="grid gap-2">
                                 <div className="flex items-center gap-2 font-medium leading-none">
-                                    Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                                    Trending up by 5.2% this month <TbTrendingUp className="h-4 w-4" />
                                 </div>
                                 <div className="flex items-center gap-2 leading-none text-muted-foreground">
                                     January - June 2024

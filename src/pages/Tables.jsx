@@ -1,42 +1,53 @@
 import Layout from "@/components/ui/Layout.jsx";
-import TableReservation from "@/components/ui/TableReservation.jsx";
-import ReactDOM from 'react-dom';
 import {Card} from "@/components/ui/card.jsx";
+import styled from "styled-components";
 
 function Tables() {
-    function showTable(name,person,status){
-          const tableContainer =  document.querySelector(".table-section")
-        const root = ReactDOM.createRoot(tableContainer);
-        root.render(<TableReservation name={name} person={person} status={status} />);
-    }
+
+    const Table = styled.div`
+        background: ${({ status }) => (status === "available" ? "var(--chart-7)" : "var(--chart-6)")};
+        color: ${({ status }) => (status === "available" ? "var(--chart-6)" : "var(--chart-7)")};
+        border-radius: 10px;
+        font-size: 25px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: none;
+    `
+    const TableChild = styled.div`
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: ${({ status }) => (status === "available" ? "var(--chart-6)" : "var(--chart-7)")};
+        color: ${({ status }) => (status === "available" ? "var(--chart-7)" : "var(--chart-6)")};
+        border-top-left-radius: 10px;
+    `
 
     const tables = [
         {id:1,name:"T-01",status:"available",person:2},
-        {id:2,name:"T-02",status:"available",person:4},
+        {id:2,name:"T-02",status:"reserved",person:4},
         {id:3,name:"T-03",status:"available",person:6},
         {id:4,name:"T-04",status:"available",person:10},
-        {id:5,name:"T-05",status:"reserved",person:8}]
+        {id:5,name:"T-05",status:"reserved",person:8},
+        {id:6,name:"T-06",status:"reserved",person:6},
+        {id:7,name:"T-07",status:"reserved",person:8},
+        {id:8,name:"T-08",status:"available",person:2},
+        {id:9,name:"T-09",status:"reserved",person:4},
+        {id:10,name:"T-10",status:"available",person:10}]
     return (
         <Layout>
-            <main className="h-[622px] w-full flex gap-5">
-                <Card className="table-section border-none flex-[4] flex items-center justify-center rounded-xl p-5">
-
+            <main className="w-full h-[622px]">
+                <Card className="w-full h-full border-none p-5 grid grid-cols-5 grid-rows-4 gap-5">
+                    {tables.map((table) => <Table key={table.id} status={table.status}>
+                        {table.name}
+                        <TableChild status={table.status}><div className="size-12 flex justify-center items-center">{table.person}</div> </TableChild>
+                    </Table>)}
                 </Card>
-                <div className="bg-white flex-[1] rounded-xl grid grid-cols-3 grid-rows-8 gap-5 p-5">
-                    {
-                        tables.map((table) => {
-                            return(
-                                <div key={table.id} className={`${table.status === "available" ? "bg-purple-400" : "bg-yellow-400" } font-bold overflow-hidden relative text-white rounded-lg flex items-center justify-center cursor-pointer`}
-                                     onClick={() => showTable(table.name,table.person,table.status)}>
-                                    <div>{table.name}</div>
-                                    <div className={`absolute w-5 h-5 text-center leading-5 bottom-0 right-0 text-[10px] ${table.status === "available" ? "bg-purple-500" : "bg-yellow-500" }`}>{table.person}</div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-
             </main>
+
         </Layout>
     );
 }
