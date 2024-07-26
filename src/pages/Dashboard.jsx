@@ -1,6 +1,6 @@
 import Layout from "../components/ui/Layout.jsx";
 import InfoCards from "../components/ui/InfoCards.jsx";
-import DataTable from "../components/ui/DataTable.jsx";
+import UserTable from "../components/ui/UserTable.jsx";
 import {Button} from "../components/ui/button.jsx";
 import {Card, CardFooter} from "../components/ui/card.jsx";
 import { ChartContainer,ChartTooltip,ChartTooltipContent,ChartLegend, ChartLegendContent } from "../components/ui/chart"
@@ -415,7 +415,7 @@ function Dashboard() {
                     </CardFooter>
                 </Card>
                 <Card className="col-start-2 col-span-3 row-start-4 row-span-4 border-none text-center relative">
-                    <DataTable columns={columns} data={users} className="h-full ]"/>
+                    <UserTable columns={columns} data={users} className="h-full"/>
                 </Card>
             </main>
         </Layout>

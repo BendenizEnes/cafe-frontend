@@ -1,13 +1,13 @@
-import Layout from "../components/ui/Layout.jsx";
-import {Card} from "../components/ui/card.jsx";
-import {Button} from "../components/ui/button.jsx";
-import Account from "../components/ui/Account.jsx";
-import {Label} from "../components/ui/label.jsx";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "../components/ui/form.jsx"
+import Layout from "./Layout.jsx";
+import {Card} from "./card.jsx";
+import {Button} from "./button.jsx";
+import Account from "../../pages/Account.jsx";
+import {Label} from "./label.jsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "./form.jsx"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { Input } from "../components/ui/input.jsx"
+import { Input } from "./input.jsx"
 import {Link} from "react-router-dom";
 import {BiSolidHide, BiSolidShow} from "react-icons/bi";
 import {useState} from "react";
@@ -52,10 +52,7 @@ function Security() {
     }
 
     return (
-        <Layout>
-            <main className="h-[622px] w-full flex flex-row gap-5">
-                <Account/>
-                <div className="rounded-xl flex flex-col gap-5 flex-[2.5]">
+        <div className="rounded-xl flex flex-col gap-5 flex-[2.5]">
                     <div className="w-full flex gap-5">
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/billing" className="flex items-center px-10 h-full"> Billing & Plans </Link></Button>
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
@@ -133,9 +130,6 @@ function Security() {
                         </Form>
                     </Card>
                 </div>
-            </main>
-
-        </Layout>
     );
 }
 

@@ -1,5 +1,3 @@
-import Layout from "@/components/ui/Layout.jsx";
-import Account from "@/components/ui/Account.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import {Link} from "react-router-dom";
 import {Card} from "@/components/ui/card.jsx";
@@ -8,10 +6,7 @@ import { Progress } from "@/components/ui/progress.jsx"
 
 function Billing() {
     return (
-        <Layout>
-            <main className="h-[622px] w-full flex flex-row gap-5">
-                <Account/>
-                <div className=" flex flex-col gap-5 flex-[2.5]">
+        <div className=" flex flex-col gap-5 flex-[2.5]">
                     <div className="w-full flex gap-5">
                         <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/account/billing" className="flex items-center px-10 h-full"> Billing & Plans </Link></Button>
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
@@ -50,8 +45,6 @@ function Billing() {
                         </div>
                     </Card>
                 </div>
-            </main>
-        </Layout>
     );
 }
 

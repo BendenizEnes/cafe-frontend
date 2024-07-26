@@ -1,4 +1,3 @@
-import Layout from "@/components/ui/Layout.jsx";
 import {Card} from "@/components/ui/card.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import { z } from "zod"
@@ -7,7 +6,6 @@ import { useForm } from "react-hook-form"
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx"
 import { Input } from "@/components/ui/input.jsx"
 import {Link} from "react-router-dom";
-import Account from "@/components/ui/Account.jsx";
 import {Label} from "@/components/ui/label.jsx";
 import {useState} from "react";
 
@@ -55,10 +53,7 @@ function Settings() {
     }
 
     return (
-        <Layout>
-            <main className="h-[622px] w-full flex gap-5">
-                <Account/>
-                <div className="rounded-xl flex flex-col gap-5 flex-[2.5]">
+        <div className="rounded-xl flex flex-col gap-5 flex-[2.5]">
                     <div className="buttons w-full flex gap-5">
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/billing" className="flex items-center px-10 h-full"> Billing & Plans </Link></Button>
                         <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
@@ -129,9 +124,6 @@ function Settings() {
                         </div>
                     </Card>
                 </div>
-            </main>
-
-        </Layout>
     );
 }
 

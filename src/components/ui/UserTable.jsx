@@ -9,7 +9,7 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/
 import { Button } from "@/components/ui/button.jsx"
 import {useState} from "react";
 import {Input} from "@/components/ui/input.jsx";
-export default function DataTable ({data,columns}){
+export default function UserTable ({data,columns}){
 
     const [sorting, setSorting] = useState([])
     const [columnFilters, setColumnFilters] = useState([])

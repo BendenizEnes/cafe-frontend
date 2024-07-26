@@ -6,6 +6,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .grid-cols-minmax {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+  }
+  .grid-rows-minmax {
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
 @layer base {
   :root {
     --background: #e0ecfb;
