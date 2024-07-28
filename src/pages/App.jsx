@@ -8,6 +8,8 @@ import Tables from "../pages/Tables.jsx";
 import Layout from "../components/ui/Layout.jsx";
 import Reservations from "../pages/Reservations.jsx";
 import Account from "../pages/Account.jsx";
+import Schedule from "@/pages/Schedule.jsx";
+import Menu from "@/pages/Menu.jsx";
 
 function App() {
 
@@ -20,9 +22,10 @@ function App() {
             <Route path="security" element={<Security/>}></Route>
             <Route path="billing" element={<Billing/>}></Route>
         </Route>
-
-        <Route path="/tables" element={<Tables/>}></Route>
-        <Route path="/reservations" element={<Reservations/>}></Route>
+        <Route path="schedule" element={<Schedule/>}></Route>
+        <Route path="tables" element={<Tables/>}></Route>
+        <Route path="reservations" element={<Reservations/>}></Route>
+        <Route path="menu" element={<Menu/>}></Route>
     </Routes>
   )
 }

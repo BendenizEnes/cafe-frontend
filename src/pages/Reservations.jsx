@@ -12,22 +12,19 @@ import {
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
 import {TbArrowsUpDown, TbEdit, TbTrash} from "react-icons/tb";
 import {useState} from "react";
-import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.jsx";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "@/components/ui/dialog.jsx";
 import {Label} from "@/components/ui/label.jsx";
 import {Input} from "@/components/ui/input.jsx";
 function Reservations() {
     const columns = [
-        {
-            accessorKey: "name",
-            header:(({column}) =>
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Name <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
-        },
         {
             accessorKey: "date",
             header:(({column}) =>
@@ -38,6 +35,7 @@ function Reservations() {
                 >
                     Date <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
+            size:200
         },
         {
             accessorKey: "time",
@@ -49,6 +47,21 @@ function Reservations() {
                 >
                     Time <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
+            size:200,
+            cell:(({row})=> <div className="text-[#5555dd] font-[600]">{row.getValue("time")}</div>)
+        },
+        {
+            accessorKey: "name",
+            header:(({column}) =>
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    className="w-full"
+                >
+                    Name <TbArrowsUpDown className="ml-2 h-4 w-4" />
+                </Button>),
+            size:300,
+            cell:(({row})=> <div className="font-[700]">{row.getValue("name")}</div>)
         },
         {
             accessorKey: "pax",
@@ -60,6 +73,7 @@ function Reservations() {
                 >
                     Pax <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
+            size:200
         },
         {
             accessorKey: "table",
@@ -71,6 +85,7 @@ function Reservations() {
                 >
                     Table <TbArrowsUpDown className="ml-2 h-4 w-4" />
                 </Button>),
+            size:200
         },
     ]
     const reservations = [
@@ -179,7 +194,7 @@ function Reservations() {
                             <TableRow className="h-11" key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                        <TableHead key={header.id}>
+                                        <TableHead key={header.id} style={{ width: `${header.getSize()}px` }}>
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
@@ -189,7 +204,7 @@ function Reservations() {
                                         </TableHead>
                                     )
                                 })}
-                                <div></div>
+                                <div className="w-full"></div>
                                 </TableRow>
                             ))}
                         </TableHeader>
@@ -202,7 +217,7 @@ function Reservations() {
                                                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                             </TableCell>
                                         ))}
-                                        <TableCell className="max-w-14 items-center justify-center flex gap-3">
+                                        <TableCell className="w-full pr-10 text-end items-center justify-end flex gap-3">
                                             <div>
                                                 <Dialog>
                                                     <DialogTrigger asChild>
@@ -212,7 +227,7 @@ function Reservations() {
                                                         <DialogHeader>
                                                             <DialogTitle>Edit Reservation</DialogTitle>
                                                         </DialogHeader>
-                                                        <div className="grid gap-4 py-4">
+                                                        <DialogDescription className="grid gap-4 py-4">
                                                             <div className="grid grid-cols-4 items-center gap-4">
                                                                 <Label htmlFor="name" className="text-right">
                                                                     Name
@@ -221,10 +236,10 @@ function Reservations() {
                                                                        className="col-span-3"/>
                                                             </div>
                                                             <div className="grid grid-cols-4 items-center gap-4">
-                                                                <Label htmlFor="person" className="text-right">
+                                                                <Label htmlFor="pax" className="text-right">
                                                                     Person
                                                                 </Label>
-                                                                <Input id="person" type="number"
+                                                                <Input id="pax" type="number"
                                                                        placeholder={row.original.pax}
                                                                        className="col-span-3"/>
                                                             </div>
@@ -247,12 +262,12 @@ function Reservations() {
                                                                        className="col-span-3"/>
                                                             </div>
                                                             <div className="grid grid-cols-4 items-center gap-4">
-                                                                <Label htmlFor="time" className="text-right">
+                                                                <Label htmlFor="table" className="text-right">
                                                                     Table
                                                                 </Label>
-                                                                <Input id="time" type="text" placeholder={row.original.table} className="col-span-3"/>
+                                                                <Input id="table" type="text" placeholder={row.original.table} className="col-span-3"/>
                                                             </div>
-                                                        </div>
+                                                        </DialogDescription>
                                                         <DialogFooter>
                                                             <Button type={`button {/*submit*/}`}>Save changes</Button>
                                                         </DialogFooter>
@@ -267,9 +282,9 @@ function Reservations() {
                                                         <DialogHeader>
                                                             <DialogTitle>Delete Reservation</DialogTitle>
                                                         </DialogHeader>
-                                                        <div className="">
+                                                        <DialogDescription>
                                                             Are You Sure You Want to Delete This Reservation?
-                                                        </div>
+                                                        </DialogDescription>
                                                         <DialogFooter>
                                                             <Button type={`button {/*submit*/}`}>Delete</Button>
                                                             <Button type={`button {/*submit*/}`} variant="ghost" onClick={() => document.querySelector(".dialogClose").click()}>Cancel</Button>

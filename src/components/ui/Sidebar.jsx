@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import { MdOutlineTableBar} from "react-icons/md";
-import {TbBuilding, TbCalendarMonth, TbChevronLeft, TbChevronRight, TbLayoutGrid} from "react-icons/tb";
+import {TbBook, TbBuilding, TbCalendarMonth, TbChevronLeft, TbChevronRight, TbLayoutGrid} from "react-icons/tb";
 import { useState} from "react";
 
 import {Card} from "@/components/ui/card.jsx";
@@ -30,9 +30,9 @@ function Sidebar() {
         },
         {
             id: 2,
-            name: "Calendar",
+            name: "Schedule",
             icon: <TbCalendarMonth className="dark:text-white"/>,
-            url: "/calendar",
+            url: "/schedule",
         },
         {
             id: 3,
@@ -56,6 +56,12 @@ function Sidebar() {
             name: "Tables",
             icon: <MdOutlineTableBar className="dark:text-white"/>,
             url: "/tables",
+        },
+        {
+            id: 5,
+            name: "Menu",
+            icon: <TbBook  className="dark:text-white"/>,
+            url: "/menu",
         },
     ];
 
