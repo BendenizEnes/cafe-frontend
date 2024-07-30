@@ -7,24 +7,22 @@ import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTr
 import {Label} from "@/components/ui/label.jsx";
 import {Input} from "@/components/ui/input.jsx";
 
-const Table = styled.div`   
-        background: #fff;
-        border:3px solid  ${({ status }) => (status !== "available" ? "#adcbe3" : "#2a4d69")};
-        color:#2a4d69;
-        border-radius: 20px;
-        font-size: 25px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        cursor: pointer;
-    `
+const Table = styled.div`
+    border: 3px solid ${({status}) => (status !== "available" ? "#adcbe3" : "#2a4d69")};
+    color: #2a4d69;
+    border-radius: 20px;
+    font-size: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+`
 const TableChild = styled.div`
         position: absolute;
         bottom: 0;
         right: 0;
-        color:#2a4d69;
         border-bottom-right-radius: 17px;
     `
 
@@ -57,13 +55,13 @@ function Tables() {
                     <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/reservations" className="flex items-center px-10 h-full">Reservation List </Link></Button>
                     <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/tables" className="flex items-center px-10 h-full">Tables </Link></Button>
                 </div>
-                <Card className="w-full h-full border-none bg-[#fcfcfc] p-10 grid grid-cols-6 gap-10 grid-rows-minmax">
+                <Card className="grid grid-cols-6 gap-10 grid-rows-minmax">
                     {tables.map((table) => {
                         if (table.status === "available"){
                         return (
                             <Dialog key={table.id}>
                                 <DialogTrigger asChild>
-                                    <Table status={table.status} className="aspect-square">
+                                    <Table status={table.status} className="aspect-square dark:text-[#1DBAFF]">
                                         {table.name}
                                         <TableChild status={table.status}><div className="size-8 text-xl flex justify-center items-center">{table.person}</div> </TableChild>
                                     </Table>
@@ -107,7 +105,7 @@ function Tables() {
                             return (
                                 <Dialog key={table.id}>
                                     <DialogTrigger asChild>
-                                        <Table status={table.status} className="aspect-square">
+                                        <Table status={table.status} className="aspect-square dark:text-[#1DBAFF]">
                                             {table.name}
                                             <TableChild status={table.status}><div className="size-8 text-xl flex justify-center items-center">{table.person}</div> </TableChild>
                                         </Table>

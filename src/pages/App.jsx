@@ -1,9 +1,9 @@
 import '../styles/App.css'
 import { Route, Routes} from "react-router-dom";
 import Dashboard from "./Dashboard.jsx";
-import Security from "../components/ui/Security.jsx";
-import Settings from "../components/ui/Settings.jsx";
-import Billing from "../components/ui/Billing.jsx";
+import Security from "./Security.jsx";
+import Settings from "./Settings.jsx";
+import Billing from "./Billing.jsx";
 import Tables from "../pages/Tables.jsx";
 import Layout from "../components/ui/Layout.jsx";
 import Reservations from "../pages/Reservations.jsx";

@@ -1,13 +1,13 @@
-import Layout from "./Layout.jsx";
-import {Card} from "./card.jsx";
-import {Button} from "./button.jsx";
-import Account from "../../pages/Account.jsx";
-import {Label} from "./label.jsx";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "./form.jsx"
+import Layout from "../components/ui/Layout.jsx";
+import {Card} from "../components/ui/card.jsx";
+import {Button} from "../components/ui/button.jsx";
+import Account from "./Account.jsx";
+import {Label} from "../components/ui/label.jsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "../components/ui/form.jsx"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { Input } from "./input.jsx"
+import { Input } from "../components/ui/input.jsx"
 import {Link} from "react-router-dom";
 import {BiSolidHide, BiSolidShow} from "react-icons/bi";
 import {useState} from "react";
@@ -58,7 +58,7 @@ function Security() {
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
                         <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/account/security" className="flex items-center px-10 h-full">Security </Link></Button>
                     </div>
-                    <Card className="h-full border-none p-8 overflow-hidden">
+                    <Card className="overflow-hidden h-full">
                         <div
                             className="pb-1 pr-10 mb-5 border-b-2 border-b-border inline-block font-[500] text-lg">Change
                             Your Password

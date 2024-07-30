@@ -66,7 +66,7 @@ function Sidebar() {
     ];
 
     return (
-        <Card className={`font-[500] ${isSidebarOpen ? "w-60" : "w-20"} transition-[width] duration-500 ease-in-out border-none`}>
+        <Card className={`font-[500] ${isSidebarOpen ? "w-60" : "w-20"} transition-[width] duration-500 p-0 ease-in-out`}>
                 <div className="toggle-button-container w-full h-4 relative">
                     <div className="toggle-button absolute top-5 right-[-18px] rounded-full">
                         <button className="text-white p-[5px] w-full h-full bg-[#1DBAFF] border-[6px] border-background rounded-full" onClick={ () => {

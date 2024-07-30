@@ -21,7 +21,7 @@ function Header() {
     const { setTheme } = useTheme()
 
     return (
-        <Card className="Header fixed left-0 top-0 right-0 h-20 border-none rounded-none flex items-center justify-between px-10 z-10">
+        <Card className="Header fixed left-0 top-0 right-0 h-20 rounded-none flex items-center justify-between px-10 z-10">
             <div className="logo flex gap-2 items-center text-xl font-bold">
                 <img src="https://images.squarespace-cdn.com/content/v1/5e0849d5b75e913537ba6e4b/1580072657793-FQHY1078YO7V1B6O3A5C/Target%2BLogo%2B_%2BPictorial%2BLogo%2BExample%2B_%2BMill%2BCreek%2BCreative.png" className="w-10" alt=""/>
                 <span>HiganTech</span>

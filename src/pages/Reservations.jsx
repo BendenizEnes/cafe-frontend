@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/dialog.jsx";
 import {Label} from "@/components/ui/label.jsx";
 import {Input} from "@/components/ui/input.jsx";
+
 function Reservations() {
     const columns = [
         {
@@ -189,7 +190,7 @@ function Reservations() {
             </div>
             <div className="border-b">
                 <Table className="">
-                    <TableHeader className="bg-[#f1f1f1]">
+                    <TableHeader className="">
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow className="h-11" key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
@@ -327,7 +328,7 @@ function Reservations() {
                     <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/tables"
                                                                                        className="flex items-center px-10 h-full">Tables </Link></Button>
                 </div>
-                <Card className="w-full h-full border-none bg-[#fcfcfc] overflow-hidden text-center relative">
+                <Card className="border-none overflow-hidden text-center h-full relative">
                     <ReservationTable data={reservations} columns={columns}/>
                 </Card>
             </main>

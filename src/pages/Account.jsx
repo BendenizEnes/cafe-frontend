@@ -1,13 +1,14 @@
 import {Button} from "@/components/ui/button.jsx";
 import Layout from "@/components/ui/Layout.jsx";
 import {Outlet} from "react-router-dom";
+import {Card} from "@/components/ui/card.jsx";
 
 
 function Account() {
     return (
         <Layout>
             <main className="h-[622px] w-full flex flex-row gap-5">
-                <div className="bg-card flex-1 flex flex-col items-center rounded-xl shadow-md p-8">
+                <Card className="flex-1 flex flex-col items-center">
                     <div
                         className="profile pb-1 border-b border-b-border border-opacity-10 w-full flex flex-col items-center pt-3 gap-3">
                         <div className="photo w-32">
@@ -51,7 +52,7 @@ function Account() {
                             <span>Admin</span>
                         </div>
                     </div>
-                </div>
+                </Card>
                 <Outlet/>
             </main>
         </Layout>

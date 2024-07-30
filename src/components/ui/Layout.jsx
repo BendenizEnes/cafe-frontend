@@ -7,7 +7,7 @@ function Layout({children}) {
     return (
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
             <Header/>
-            <div className="flex gap-5 flex-row mt-[100px] m-5">
+            <div className="flex gap-5 flex-row mt-[100px] min-h-[622px] m-5">
                 <Sidebar/>
                 {children}
             </div>

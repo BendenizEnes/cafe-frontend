@@ -59,7 +59,7 @@ function Settings() {
                         <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/security" className="flex items-center px-10 h-full">Security </Link></Button>
                     </div>
-                    <Card className="w-full h-full p-8 border-none overflow-hidden shadow-md">
+                    <Card className="overflow-hidden h-full">
 
                         <div className="h-full">
                             <div className="pb-1 pr-10 mb-5 border-b-2 border-b-border inline-block font-[500] text-lg">Change Your Information</div>

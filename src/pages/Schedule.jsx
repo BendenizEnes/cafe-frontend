@@ -27,7 +27,6 @@ function Schedule() {
         allDay:false,
         id:0
     })
-    const [initialDate,setInitialDate] = useState(new Date())
 
     /*useEffect(() => {
         let containerEl = document.getElementById("draggable-el")
@@ -97,11 +96,10 @@ function Schedule() {
     return (
         <Layout>
            <main className="w-full h-[622px] grid grid-cols-4 gap-5">
-               <Card className="col-span-3 p-5 border-none">
+               <Card className="col-span-3">
                    <FullCalendar
                        plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                        initialView="dayGridMonth"
-                       initialDate={initialDate.getDate()}
                        dateClick={handleDateClick}
                        headerToolbar={{
                            left: 'prev next today',
@@ -118,7 +116,7 @@ function Schedule() {
                        eventClick={(data) => handleDeleteModal(data)}
                    />
                </Card>
-               <Card id="draggable-el" className="col-span-1 row-span-1 border-none p-5">
+               <Card id="draggable-el" className="col-span-1 row-span-1">
                    {allEvents.map((event) => (
                        <div key={event.id} title={event.title} className="fc-event w-full my-2 rounded-md p-2 bg-purple-400 text-white">
                            {event.title}

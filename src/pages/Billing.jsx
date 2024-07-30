@@ -12,7 +12,7 @@ function Billing() {
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/security" className="flex items-center px-10 h-full">Security </Link></Button>
                     </div>
-                    <Card className="h-full border-none p-8 overflow-hidden">
+                    <Card className="overflow-hidden h-full">
                         <div className="pb-1 pr-5 mb-5 border-b-2 border-b-border inline-block font-[600] text-lg">
                             Current Plan
                         </div>
