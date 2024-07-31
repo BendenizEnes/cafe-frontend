@@ -1,9 +1,9 @@
-
+/*React-Router-Dom Active Link*/
 .active{
     color:#1DBAFF;
 }
 .dark .active{
-    color: #91dcf8;
+    color: #eee;
 }
 .active .icon{
     background: #DCF6FF;
@@ -12,21 +12,85 @@
     background: #1DBAFF;
 }
 
-
+/*Scrollbar Design*/
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--scrollbar-bg);
+    background: var(--background);
 }
 
-
 ::-webkit-scrollbar-thumb {
-    background: var(--scrollbar);
+    background: var();
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-hover);
+    background: var();
 }
+
+
+/*FullCalendar Issue Fix*/
+.fc-col-header, .fc-timegrid-body,.fc-timegrid-body table, .fc-timegrid-header,.fc-timegrid-header table, .fc-daygrid-body, .fc-grid-body, .fc-scrollgrid-sync-table,.fc-event-title-container {
+    width: 100% !important
+}
+.fc-day-today{
+    background: var(--fc-today-bg-color);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus, .fc .fc-button-primary:not(:disabled):active:focus,.fc .fc-button-primary:not(:disabled):focus{
+    box-shadow: none;
+}
+
+tr .fc-timegrid-col .fc-timegrid-col-frame{
+    border-right: 1px solid #ddd;
+    border-left: none;
+}
+.dark tr .fc-timegrid-col .fc-timegrid-col-frame{
+    border-right: 1px solid #333;
+    border-left: none;
+}
+
+.fc-timeGridWeek-view .fc-timegrid-body{
+    z-index: 0;
+}
+
+.fc-timeGridWeek-view .fc-timegrid-cols td{
+    z-index: 1;
+    position: relative;
+}
+
+.fc-col-header th{
+    border-left:none;
+    border-right:none;
+    padding: 10px 0;
+}
+
+.fc-scroller::-webkit-scrollbar{
+    display: none;
+}
+
+.fc .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 10px;
+}
+
+.fc-timegrid-slots tr{
+    height: 25px;
+}
+.fc-timegrid-divider.fc-cell-shaded{
+    background: #888;
+}
+.dark .fc-timegrid-divider.fc-cell-shaded{
+    background: #333;
+    border: none;
+    height: 1px;
+}
+colgroup{
+    width: 80px;
+}
+.fc-timeGridDay-view .fc-day-today,.fc-timeGridDay-view .fc-daygrid-day-frame,.fc-timeGridDay-view .fc-timegrid-now-indicator-container {
+    background: var(--card);
+}
+
+

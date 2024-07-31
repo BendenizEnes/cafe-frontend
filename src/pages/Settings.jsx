@@ -74,7 +74,7 @@ function Settings() {
                                         <FormItem className="h-2">
                                             <FormLabel>First Name</FormLabel>
                                             <FormControl>
-                                                <Input disabled={isDisabled} placeholder="Name" {...field} className=" bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                                <Input disabled={isDisabled} placeholder="Name" {...field} className=""/>
                                             </FormControl>
                                             <FormMessage/>
                                         </FormItem>)}/>
@@ -82,7 +82,7 @@ function Settings() {
                                         <FormItem className="h-2">
                                             <FormLabel>Last Name</FormLabel>
                                             <FormControl>
-                                                <Input disabled={isDisabled} id="lastname" placeholder="Last Name" {...field} className="outline-1 outline-[#1DBAFF]  bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                                <Input disabled={isDisabled} id="lastname" placeholder="Last Name" {...field} className=""/>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>)}/>
@@ -90,7 +90,7 @@ function Settings() {
                                         <FormItem className="h-2">
                                             <FormLabel>Mobile Number</FormLabel>
                                             <FormControl>
-                                                <Input disabled={isDisabled} id="mobile" placeholder={"5123456789"} {...field} className=" bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                                <Input disabled={isDisabled} id="mobile" placeholder={"5123456789"} {...field} className=""/>
                                             </FormControl>
                                             <FormMessage/>
                                         </FormItem>)}/>
@@ -98,7 +98,7 @@ function Settings() {
                                         <FormItem className="h-2">
                                             <FormLabel>Line Number</FormLabel>
                                             <FormControl>
-                                                <Input disabled={isDisabled} id="line" placeholder={"2987654321"} {...field} className=" bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                                <Input disabled={isDisabled} id="line" placeholder={"2987654321"} {...field} className=""/>
                                             </FormControl>
                                             <FormMessage/>
                                         </FormItem>)}/>
@@ -106,7 +106,7 @@ function Settings() {
                                         <FormItem className="h-2">
                                             <FormLabel>Email</FormLabel>
                                             <FormControl>
-                                                <Input disabled={isDisabled} id="email" placeholder="example@domain.com" {...field} className=" bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                                <Input disabled={isDisabled} id="email" placeholder="example@domain.com" {...field} className=""/>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>)}/>
@@ -114,7 +114,7 @@ function Settings() {
                                         <FormItem className="h-2">
                                             <FormLabel>Company Name</FormLabel>
                                             <FormControl>
-                                                <Input disabled={isDisabled} id="company" placeholder="Company" {...field} className=" bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                                <Input disabled={isDisabled} id="company" placeholder="Company" {...field} className=""/>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>)}/>

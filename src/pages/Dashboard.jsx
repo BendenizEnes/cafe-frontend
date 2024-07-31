@@ -24,11 +24,9 @@ function Dashboard() {
     const chartConfig = {
         desktop: {
             label: "Desktop",
-            color: "#304674",
         },
         mobile: {
             label: "Mobile",
-            color: "#c6d3e3",
         },
     }
 
@@ -463,7 +461,7 @@ function Dashboard() {
 
     return (
         <Layout>
-            <main className="grid grid-cols-4 grid-rows-7 gap-5 h-[1050px]">
+            <main className="grid grid-cols-4 grid-rows-7 w-full gap-5 h-[1050px]">
                 <div className="col-start-1 col-span-4 row-start-1 row-span-1 border-none flex gap-5">
                     <InfoCards title="başlık 1" variant="secondary" className="">Deneme A</InfoCards>
                     <InfoCards title="başlık 2" variant="primary" className="bg-ring">Deneme B</InfoCards>
@@ -480,8 +478,8 @@ function Dashboard() {
                                    tickFormatter={(value) => value.slice(0, 3)}/>
                             <YAxis tickLine={false} tickMargin={5} axisLine={false}/>
                             <ChartLegend content={<ChartLegendContent/>}/>
-                            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4}/>
-                            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4}/>
+                            <Bar dataKey="desktop" radius={4} fill="var(--chart-1)" />
+                            <Bar dataKey="mobile" radius={4} fill="var(--chart-2)"/>
                         </BarChart>
                     </ChartContainer>
                 </Card>
@@ -493,8 +491,8 @@ function Dashboard() {
                                    tickFormatter={(value) => value.slice(0, 3)}/>
                             <YAxis tickLine={false} tickMargin={5} axisLine={false}/>
                             <ChartTooltip content={<ChartTooltipContent className="bg-card"/>}/>
-                            <Area dataKey="desktop" type="natural" fill="var(--chart-7)" fillOpacity={0.93} stroke="var(--chart-7)"/>
-                            <Area dataKey="mobile"  type="natural" fill="var(--chart-6)" fillOpacity={0.93} stroke="var(--chart-6)"/>
+                            <Area dataKey="desktop" type="natural" fill="var(--chart-1)" fillOpacity={0.95} stroke="var(--chart-1)"/>
+                            <Area dataKey="mobile"  type="natural" fill="var(--chart-2)" fillOpacity={0.95} stroke="var(--chart-2)"/>
 
                             <ChartLegend content={<ChartLegendContent/>}/>
                         </AreaChart>

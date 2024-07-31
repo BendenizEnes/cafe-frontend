@@ -75,9 +75,9 @@ function Security() {
                                     <FormItem className="relative h-[120px]">
                                         <FormLabel>Current Password</FormLabel>
                                         <FormControl>
-                                            <Input disabled={isDisabled} type={isCurrentPassHidden ? "password" : "text"} {...field} className=" bg-[#f8f8f8] dark:bg-[#393D42]"/>
+                                            <Input disabled={isDisabled} type={isCurrentPassHidden ? "password" : "text"} {...field} className=""/>
                                         </FormControl>
-                                        <button type="button" className="absolute top-8 right-3" onClick={() => setIsCurrentPassHidden(!isCurrentPassHidden)}>
+                                        <button type="button" disabled={isDisabled} className="absolute top-8 right-3" onClick={() => setIsCurrentPassHidden(!isCurrentPassHidden)}>
                                             <BiSolidShow className={`h-[1.2rem] w-[1.2rem] transition-all ${!isCurrentPassHidden ? "scale-100" : "scale-0"}`}/>
                                             <BiSolidHide className={`absolute top-0 h-[1.2rem] w-[1.2rem] transition-all ${!isCurrentPassHidden ? "scale-0" : "scale-100"}`}/>
                                         </button>
@@ -90,9 +90,9 @@ function Security() {
                                         <FormLabel>New Password</FormLabel>
                                         <FormControl>
                                             <Input disabled={isDisabled} type={isNewPassHidden ? "password" : "text"}
-                                                   className=" bg-[#f8f8f8] dark:bg-[#393D42]" {...field}/>
+                                                   className="" {...field}/>
                                         </FormControl>
-                                        <button type="button" className="absolute top-8 right-3"
+                                        <button type="button" disabled={isDisabled} className="absolute top-8 right-3"
                                                 onClick={() => setIsNewPassHidden(!isNewPassHidden)}>
                                             <BiSolidShow
                                                 className={`h-[1.2rem] w-[1.2rem] transition-all ${!isNewPassHidden ? "scale-100" : "scale-0"}`}/>
@@ -109,11 +109,11 @@ function Security() {
                                         <FormLabel>Confirm New Password</FormLabel>
                                         <FormControl>
                                             <Input disabled={isDisabled} type={isConfirmPassHidden ? "password" : "text"}
-                                                   className=" bg-[#f8f8f8] dark:bg-[#393D42]" {...field}/>
+                                                   className="" {...field}/>
                                         </FormControl>
 
 
-                                        <button type="button" className="absolute top-8 right-3"
+                                        <button type="button" disabled={isDisabled} className="absolute top-8 right-3"
                                                 onClick={() => setIsConfirmPassHidden(!isConfirmPassHidden)}>
                                             <BiSolidShow
                                                 className={`h-[1.2rem] w-[1.2rem] transition-all ${!isConfirmPassHidden ? "scale-100" : "scale-0"}`}/>

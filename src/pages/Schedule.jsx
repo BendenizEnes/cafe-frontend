@@ -4,20 +4,19 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import {Card} from "@/components/ui/card.jsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader,DialogTitle,} from "@/components/ui/dialog.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import {Input} from "@/components/ui/input.jsx";
 import {Label} from "@/components/ui/label.jsx";
 
 function Schedule() {
-    const [events,setEvents]=useState([])
     const [allEvents,setAllEvents] = useState([
-        {id:1, title:"Event 1",start:"2024-07-25",end:"2024-08-01"},
-        {id:2, title:"Event 2",start:"2024-07-28",end:"2024-07-30",allDay:false},
-        {id:3, title:"Event 3",start:"2024-07-24"},
-        {id:4, title:"Event 4",start:"2024-08-02"},
-        {id:5, title:"Event 5",start:"2024-08-05"}])
+        {id:1, title:"Event 1",start:"2024-08-04",allDay:true},
+        {id:2, title:"Event 2",start:"2024-08-06",allDay:true},
+        {id:3, title:"Event 3",start:"2024-08-07",allDay:false},
+        {id:4, title:"Event 4",start:"2024-08-08",allDay:false},
+        {id:5, title:"Event 5",start:"2024-08-05",allDay:false}])
     const [showModal, setShowModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [idToDelete, setIdToDelete] = useState(null)
@@ -28,21 +27,6 @@ function Schedule() {
         id:0
     })
 
-    /*useEffect(() => {
-        let containerEl = document.getElementById("draggable-el")
-        if(containerEl) {
-            // new Draggable(containerEl,{
-            //     itemSelector:".fc-event",
-            //     eventData: function (eventEl){
-            //         let title = eventEl.getAttribute("title")
-            //         let id = eventEl.getAttribute("data")
-            //         let start = eventEl.getAttribute("start")
-            //         return {title, id, start}
-            //     }
-            // })
-        }
-    },[])*/
-
     function handleDateClick(arg){
         setNewEvent({
             ...newEvent,
@@ -52,7 +36,6 @@ function Schedule() {
         })
         setShowModal(true)
     }
-
     function addEvent(data){
         const event = {
                 ...newEvent,
@@ -63,7 +46,6 @@ function Schedule() {
             }
             setAllEvents([...allEvents,event])
     }
-
     function handleDeleteModal(data){
             setShowDeleteModal(true)
             setIdToDelete(Number(data.event.id))
@@ -73,14 +55,12 @@ function Schedule() {
             setShowDeleteModal(false)
             setIdToDelete(null)
     }
-
     const handleChange = (e)=> {
         setNewEvent({
             ...newEvent,
             title: e.target.value
         })
     }
-
     function handleSubmit(e){
         e.preventDefault();
         setAllEvents([...allEvents, newEvent])
@@ -93,38 +73,32 @@ function Schedule() {
         })
     }
 
+
     return (
         <Layout>
-           <main className="w-full h-[622px] grid grid-cols-4 gap-5">
-               <Card className="col-span-3">
+           <main className="w-full">
+               <Card className="w-full h-full calendarCon">
                    <FullCalendar
                        plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
-                       initialView="dayGridMonth"
+                       initialView="timeGridWeek"
                        dateClick={handleDateClick}
                        headerToolbar={{
                            left: 'prev next today',
                            center: 'title',
-                           right: "dayGridMonth,dayGridWeek,timeGridDay"
+                           right: "timeGridDay,timeGridWeek,dayGridMonth"
                        }}
                        height="100%"
                        events={allEvents}
                        nowIndicator={true}
                        editable={true}
+                       eventClassNames={["rounded-xl py-1 pl-2 font-[700] bg-[var(--chart-1)] border-none text-white"]}
                        droppable={true}
-
                        drop={(data) => addEvent(data)}
                        eventClick={(data) => handleDeleteModal(data)}
                    />
                </Card>
-               <Card id="draggable-el" className="col-span-1 row-span-1">
-                   {allEvents.map((event) => (
-                       <div key={event.id} title={event.title} className="fc-event w-full my-2 rounded-md p-2 bg-purple-400 text-white">
-                           {event.title}
-                       </div>
-                   ) )}
-               </Card>
                <Dialog open={showDeleteModal} onOpenChange={setShowDeleteModal}>
-                   <DialogContent className="sm:max-w-[425px] bg-white">
+                   <DialogContent className="sm:max-w-[425px]">
                        <DialogHeader>
                            <DialogTitle>Delete Event</DialogTitle>
                        </DialogHeader>
@@ -141,7 +115,7 @@ function Schedule() {
                    </DialogContent>
                </Dialog>
                <Dialog open={showModal} onOpenChange={setShowModal}>
-                   <DialogContent className="sm:max-w-[425px] bg-white">
+                   <DialogContent className="sm:max-w-[425px]">
                        <DialogHeader>
                            <DialogTitle>Add Event</DialogTitle>
                        </DialogHeader>

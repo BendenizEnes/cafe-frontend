@@ -66,7 +66,7 @@ function Tables() {
                                         <TableChild status={table.status}><div className="size-8 text-xl flex justify-center items-center">{table.person}</div> </TableChild>
                                     </Table>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-[425px] bg-white">
+                                <DialogContent className="sm:max-w-[425px]">
                                     <DialogHeader>
                                         <DialogTitle>Set Reservation</DialogTitle>
                                     </DialogHeader>
@@ -110,7 +110,7 @@ function Tables() {
                                             <TableChild status={table.status}><div className="size-8 text-xl flex justify-center items-center">{table.person}</div> </TableChild>
                                         </Table>
                                     </DialogTrigger>
-                                    <DialogContent className="sm:max-w-[425px] bg-white">
+                                    <DialogContent className="sm:max-w-[425px]">
                                         <DialogHeader>
                                             <DialogTitle>Set Reservation</DialogTitle>
                                         </DialogHeader>

@@ -41,7 +41,7 @@ function Header() {
                         <TbMoon
                             className="text-2xl absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"/>
                     </Button>
-                    <div className={`toggler-menu absolute font-[500] top-12 border rounded-md text-sm right-0 text-card-foreground py-2 bg-[#fff] dark:bg-background ${isThemeTogglerActive ? "" : "hidden"}`}>
+                    <div className={`toggler-menu absolute font-[500] top-12 border rounded-md text-sm right-0 text-card-foreground py-2 bg-card ${isThemeTogglerActive ? "" : "hidden"}`}>
                         <div className="hover:bg-accent w-28 cursor-pointer pl-2 py-[8px] text-start items-center mx-1 rounded" onClick={() => {
                             setTheme("light")
                             setIsThemeTogglerActive(false)
@@ -79,7 +79,7 @@ function Header() {
                             } } alt=""
                             className="rounded-full cursor-pointer"/>
                         <div
-                            className={`dropdown-menu absolute font-[500] top-12 border rounded-md text-sm right-0 text-card-foreground py-2 bg-[#fff] dark:bg-background ${isDropdownActive ? "" : "hidden"}`}>
+                            className={`dropdown-menu absolute font-[500] top-12 border rounded-md text-sm right-0 text-card-foreground py-2 bg-card ${isDropdownActive ? "" : "hidden"}`}>
                             <div className="cursor-default w-48 h-14 text-start items-center mx-1 rounded">
                                 <div className="flex p-2 gap-[10px]">
                                     <div className=" w-10 relative">

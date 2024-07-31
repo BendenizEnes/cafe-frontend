@@ -224,7 +224,7 @@ function Reservations() {
                                                     <DialogTrigger asChild>
                                                         <TbEdit className="text-xl cursor-pointer"/>
                                                     </DialogTrigger>
-                                                    <DialogContent className="sm:max-w-[425px] bg-white">
+                                                    <DialogContent className="sm:max-w-[425px] bg-card">
                                                         <DialogHeader>
                                                             <DialogTitle>Edit Reservation</DialogTitle>
                                                         </DialogHeader>
@@ -279,7 +279,7 @@ function Reservations() {
                                                     <DialogTrigger asChild>
                                                     <TbTrash className="text-xl cursor-pointer"/>
                                                     </DialogTrigger>
-                                                    <DialogContent className="sm:max-w-[425px] bg-white">
+                                                    <DialogContent className="sm:max-w-[425px]">
                                                         <DialogHeader>
                                                             <DialogTitle>Delete Reservation</DialogTitle>
                                                         </DialogHeader>
@@ -287,7 +287,7 @@ function Reservations() {
                                                             Are You Sure You Want to Delete This Reservation?
                                                         </DialogDescription>
                                                         <DialogFooter>
-                                                            <Button type={`button {/*submit*/}`}>Delete</Button>
+                                                            <Button variant="destructive">Delete</Button>
                                                             <Button type={`button {/*submit*/}`} variant="ghost" onClick={() => document.querySelector(".dialogClose").click()}>Cancel</Button>
                                                         </DialogFooter>
                                                     </DialogContent>
@@ -328,7 +328,7 @@ function Reservations() {
                     <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/tables"
                                                                                        className="flex items-center px-10 h-full">Tables </Link></Button>
                 </div>
-                <Card className="border-none overflow-hidden text-center h-full relative">
+                <Card className="border-none overflow-hidden text-center h-full relative p-0">
                     <ReservationTable data={reservations} columns={columns}/>
                 </Card>
             </main>

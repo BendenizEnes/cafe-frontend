@@ -8,7 +8,7 @@ function Menu() {
     const [cat, setCat] = useState('All');
     const menu = [
         {id:1, name:"Turkish Coffee", price:"60₺", category:"Hot Drinks", photo:"https://www.ozguvenmangalbasi.com/wp-content/uploads/2022/06/5068_dd986048-292e-4716-a490-f891b3c56882_1062775_1920x1080.jpg",},
-        {id:2, name:"Black Tea", price:"20₺", category:"Hot Drinks", photo:"https://merisehat.pk/_next/image?url=https%3A%2F%2Fms-images.s3.ap-southeast-1.amazonaws.com%2Fmedia%2FafWPDdFaI5KMS4jFoGq8NWOyRVeUvA9LbNixFbVc.jpg&w=1920&q=75",},
+        {id:2, name:"Black Tea", price:"20₺", category:"Hot Drinks", photo:"",},
         {id:3, name:"Hamburger", price:"110₺", category:"Main Course", photo:"https://www.macfit.com/wp-content/uploads/2024/04/hamburger-kac-kalori.jpg",},
         {id:4, name:"Turkish Pizza", price:"60₺", category:"Main Course", photo:"https://cdn.yemek.com/mnresize/940/940/uploads/2020/04/lahmacun-yeni-one-cikan.jpg",},
         {id:5, name:"Cappuccino", price:"85₺", category:"Hot Drinks", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cappuccino_at_Sightglass_Coffee.jpg/1200px-Cappuccino_at_Sightglass_Coffee.jpg",},
@@ -27,7 +27,6 @@ function Menu() {
     categories.unshift("All")
 
     const filteredMenu = cat === "All" ? menu : menu.filter((product) => product.category === cat)
-
     return (
         <Layout>
                 <main className="w-full flex flex-col gap-5">
@@ -41,10 +40,11 @@ function Menu() {
                         </Card>
                         <div className="w-full grid grid-cols-4 gap-5">
                             {filteredMenu.map((product) => {
+                                const src =product.photo === "" ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXX6GrLiyiN5oDkH8Badn80xAnC5oAumGmchxXoF-b4H9ZDDOJ_iexVov_mSiLU9UCI0&usqp=CAU" :product.photo
                                 return (
                                     <Card className="p-[6px]" key={product.id}>
                                         <div className="w-full h-44 rounded-[10px] overflow-hidden">
-                                            <img src={product.photo} alt="" className="w-full h-full"/>
+                                            <img src={src} alt="" className="w-full h-full"/>
                                         </div>
                                         <div className="flex justify-between p-3 font-[500]">
                                             <div>
