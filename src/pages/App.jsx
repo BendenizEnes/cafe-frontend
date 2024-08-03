@@ -25,7 +25,7 @@ function App() {
         <Route path="schedule" element={<Schedule/>}></Route>
         <Route path="tables" element={<Tables/>}></Route>
         <Route path="reservations" element={<Reservations/>}></Route>
-        <Route path="products" element={<Menu/>}></Route>
+        <Route path="menu" element={<Menu/>}></Route>
     </Routes>
   )
 }

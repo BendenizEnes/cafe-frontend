@@ -44,7 +44,7 @@ function Security() {
         },
     });
     function onSubmit(values) {
-        console.log(values);
+
     }
 
     function handleCheckboxChange(e) {

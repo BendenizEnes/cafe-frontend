@@ -16,6 +16,9 @@
 ::-webkit-scrollbar {
     width: 10px;
 }
+.buttonsCon::-webkit-scrollbar{
+    display: none;
+}
 
 ::-webkit-scrollbar-track {
     background: var(--background);

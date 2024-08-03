@@ -61,18 +61,7 @@ function Sidebar() {
             id: 5,
             name: "Menu",
             icon: <TbBook  className="dark:text-white"/>,
-            attributes: [
-                {
-                    id: 1,
-                    name: "Products",
-                    url: "/products",
-                },
-                {
-                    id: 2,
-                    name: "Categories",
-                    url: "/categories",
-                },
-            ],
+            url:"/menu"
         },
     ];
 
