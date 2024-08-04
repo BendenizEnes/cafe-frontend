@@ -1,7 +1,7 @@
 import Layout from "@/components/ui/Layout.jsx";
 import {Card} from "@/components/ui/card.jsx";
 import {Button} from "@/components/ui/button.jsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {
     Dialog,
     DialogContent, DialogDescription,
@@ -22,7 +22,6 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.jsx";
-import {TbChevronLeft, TbChevronRight} from "react-icons/tb";
 
 function Menu() {
     const [selected, setSelected] = useState('All');
@@ -45,8 +44,6 @@ function Menu() {
     ])
     const [categories,setCategories] = useState(Array.from(new Set(menu.map(item => item.category))));
     const filteredMenu = selected === "All" ? menu : menu.filter((product) => product.category === selected)
-    const [scrollToR, setScrollToR] = useState(false)
-    const [scrollToL, setScrollToL] = useState(false)
 
     const ProductSchema = z.object({
         name: z

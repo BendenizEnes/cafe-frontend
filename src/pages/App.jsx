@@ -1,5 +1,5 @@
 import '../styles/App.css'
-import { Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import Dashboard from "./Dashboard.jsx";
 import Security from "./Security.jsx";
 import Settings from "./Settings.jsx";
@@ -10,6 +10,8 @@ import Reservations from "../pages/Reservations.jsx";
 import Account from "../pages/Account.jsx";
 import Schedule from "@/pages/Schedule.jsx";
 import Menu from "@/pages/Menu.jsx";
+import Orders from "@/pages/Orders.jsx";
+import BookingList from "@/pages/BookingList.jsx";
 
 function App() {
 
@@ -23,9 +25,12 @@ function App() {
             <Route path="billing" element={<Billing/>}></Route>
         </Route>
         <Route path="schedule" element={<Schedule/>}></Route>
-        <Route path="tables" element={<Tables/>}></Route>
-        <Route path="reservations" element={<Reservations/>}></Route>
+        <Route path="reservations" element={<Reservations/>}>
+            <Route path="list" element={<BookingList/>}></Route>
+            <Route path="tables" element={<Tables/>}></Route>
+        </Route>
         <Route path="menu" element={<Menu/>}></Route>
+        <Route path="orders" element={<Orders/>}></Route>
     </Routes>
   )
 }

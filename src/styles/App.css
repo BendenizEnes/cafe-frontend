@@ -12,6 +12,11 @@
     background: #1DBAFF;
 }
 
+.active button{
+    background: #1DBAFF;
+    color: white;
+}
+
 /*Scrollbar Design*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -31,6 +36,9 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: var();
+}
+.menu::-webkit-scrollbar{
+    display: none;
 }
 
 

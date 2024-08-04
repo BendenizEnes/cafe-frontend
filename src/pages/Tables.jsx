@@ -1,14 +1,11 @@
-import Layout from "@/components/ui/Layout.jsx";
-import {Card} from "@/components/ui/card.jsx";
 import styled from "styled-components";
 import {Button} from "@/components/ui/button.jsx";
-import {Link} from "react-router-dom";
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog"
 import {Label} from "@/components/ui/label.jsx";
 import {Input} from "@/components/ui/input.jsx";
 
 const Table = styled.div`
-    border: 3px solid ${({status}) => (status !== "available" ? "#adcbe3" : "#2a4d69")};
+    border: 5px solid ${({status}) => (status === "available" ? "#adcbe3" : "#2a4d69")};
     color: #2a4d69;
     border-radius: 20px;
     font-size: 25px;
@@ -18,6 +15,7 @@ const Table = styled.div`
     justify-content: center;
     position: relative;
     cursor: pointer;
+    background: var(--card);
 `
 const TableChild = styled.div`
         position: absolute;
@@ -27,7 +25,6 @@ const TableChild = styled.div`
     `
 
 function Tables() {
-
     const tables = [
         {id:1,name:"T-01",status:"available",person:2},
         {id:2,name:"T-02",status:"reserved",person:4},
@@ -49,13 +46,7 @@ function Tables() {
         {id:18,name:"T-18",status:"available",person:2},]
 
     return (
-        <Layout>
-            <main className="w-full min-h-[622px] flex flex-col gap-5">
-                <div className="w-full flex gap-5">
-                    <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/reservations" className="flex items-center px-10 h-full">Reservation List </Link></Button>
-                    <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/tables" className="flex items-center px-10 h-full">Tables </Link></Button>
-                </div>
-                <Card className="grid grid-cols-6 gap-10 grid-rows-minmax">
+        <div className="grid grid-cols-5 gap-5 min-h-[562px]">
                     {tables.map((table) => {
                         if (table.status === "available"){
                         return (
@@ -120,10 +111,8 @@ function Tables() {
                             )
                         }
                     })}
-                </Card>
-            </main>
+                </div>
 
-        </Layout>
     );
 }
 
