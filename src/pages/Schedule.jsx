@@ -97,7 +97,7 @@ function Schedule() {
                        eventClick={(data) => handleDeleteModal(data)}
                    />
                </Card>
-               <Dialog open={showDeleteModal} onOpenChange={setShowDeleteModal}>
+                   <Dialog open={showDeleteModal} onOpenChange={setShowDeleteModal}>
                    <DialogContent className="sm:max-w-[425px]">
                        <DialogHeader>
                            <DialogTitle>Delete Event</DialogTitle>

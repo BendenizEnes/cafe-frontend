@@ -317,11 +317,6 @@ function Dashboard() {
             columns,
             getCoreRowModel: getCoreRowModel(),
             getPaginationRowModel: getPaginationRowModel(),
-            initialState: {
-                pagination: {
-                    pageSize: 10, //custom default page size
-                },
-            },
             onSortingChange: setSorting,
             getSortedRowModel: getSortedRowModel(),
             state: {

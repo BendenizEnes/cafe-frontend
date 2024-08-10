@@ -10,9 +10,9 @@ import {
     DialogTitle,
     DialogTrigger
 } from "@/components/ui/dialog.jsx";
-import {TbTrash} from "react-icons/tb";
+import {TbTrash, TbX} from "react-icons/tb";
 import {Button} from "@/components/ui/button.jsx";
-import {Form, FormControl, FormField, FormItem} from "@/components/ui/form.jsx";
+import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form.jsx";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -25,24 +25,28 @@ function Orders() {
             {
                 id:1,
                 name:"Pizza",
-                price:"120"
+                price:"120",
+                quantity:1
             },
             {
                 id:2,
                 name:"Coca-Cola",
-                price:"25"
+                price:"25",
+                quantity:1
             },
         ],status:"Pending"},
         {id:2, table:"T-02", products:[
             {
                 id:1,
                 name:"Pizza",
-                price:"120"
+                price:"120",
+                quantity:1
             },
             {
                 id:2,
                 name:"Coca-Cola",
-                price:"25"
+                price:"25",
+                quantity:1
             },
         ],status:"Paid"}])
     const [menu,setMenu] = useState([
@@ -92,20 +96,75 @@ function Orders() {
         }),
     })
     const orderForm = useForm({resolver: zodResolver(orderSchema),})
+    const [idToDelete, setIdToDelete] = useState(null)
 
     function createOrder(value){
-        setOrders([
-            ...orders,{
-            id: orders.length + 1,
-            table: value.table,
-            products:newOrder,
-            status: "Pending"
-            }
-        ])
-        setAmount(0)
-        setNewOrder([])
-        document.querySelector(".dialogClose").click()
+        if(amount !== 0){
+            setOrders([
+                ...orders,{
+                    id: orders.length + 1,
+                    table: value.table,
+                    products:newOrder,
+                    status: "Pending"
+                }
+            ])
+            setAmount(0)
+            setNewOrder([])
+            setSelected("All")
+            document.querySelector(".dialogClose").click()
+        }else{
+            alert("Please select at least one product")
+        }
+
     }
+    function deleteOrder(){
+        setOrders(orders.filter(order => order.id !== idToDelete))
+    }
+
+    const ProductCard = ({key,photo,name,price}) => {
+
+        const src = photo === "" ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXX6GrLiyiN5oDkH8Badn80xAnC5oAumGmchxXoF-b4H9ZDDOJ_iexVov_mSiLU9UCI0&usqp=CAU" : photo
+        const [quantity,setQuantity] = useState(1)
+            return(
+                <Card className="p-1 aspect-square" key={key}>
+                    <div className="w-full h-44 rounded-[10px] overflow-hidden">
+                        <img src={src} alt="" className="w-full h-full"/>
+                    </div>
+                    <div className="flex justify-between p-3 font-[500]">
+                        <div>
+                            {name}
+                        </div>
+                        <div className="text-[#1DBAFF]">
+                            {price}₺
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center px-5">
+                        <div className="quantityCon flex gap-0 bg-accent p-1 rounded-full items-center">
+                            <Button type="button" className="p-0 size-7 bg-primary rounded-full"
+                                    onClick={() => setQuantity((prevQuantity) => prevQuantity - 1)}>-</Button>
+                            <div className="h-7 w-9 bg-transparent text-center">{quantity}</div>
+                            <Button type="button" className="p-0 size-7 bg-primary rounded-full"
+                                    onClick={() => setQuantity((prevQuantity) => prevQuantity + 1)}>+</Button>
+                        </div>
+                        <div>
+                            <Button type="button" className="rounded-full px-8" onClick={() => {
+                                setNewOrder(prevOrder =>
+                                    [...prevOrder,
+                                        {
+                                            id: newOrder.length + 1,
+                                            name: name,
+                                            price: price * quantity,
+                                            quantity: quantity
+                                        }])
+                                setAmount((prevAmount) => prevAmount + Number(price)*quantity)
+                            }}
+                            >Add</Button>
+                        </div>
+                    </div>
+                </Card>
+            )
+    }
+
 
     return (
         <Layout>
@@ -114,23 +173,23 @@ function Orders() {
                     <Dialog>
                         <DialogTrigger asChild>
                             <Button className="px-8 py-5">
-                               Create Product
+                                Create Order
                             </Button>
                         </DialogTrigger>
-                        <DialogContent className="min-w-[1300px] bg-background h-[700px] flex flex-row sm:max-w-[425px]">
-                            <div className="flex-[3] border-r border-border">
-                                <DialogTitle className="">Create Order</DialogTitle>
+                        <DialogContent className="min-w-[90vw] bg-background h-[95vh] flex flex-row sm:max-w-[425px]">
+                            <div className="flex-[4] border-r border-border">
                                 <Form {...orderForm}>
-                                    <form onSubmit={orderForm.handleSubmit(createOrder)} className=" w-full h-full flex-[12]">
+                                    <form onSubmit={orderForm.handleSubmit(createOrder)}
+                                          className=" w-full h-full flex-[12]">
                                         <FormField
                                             control={orderForm.control}
                                             name="table"
-                                            render={({ field }) => (
-                                                <FormItem className="grid grid-cols-8 items-center gap-5">
+                                            render={({field}) => (
+                                                <FormItem className="flex items-center flex-col gap-3 h-[8vh]">
                                                     <Select onValueChange={field.onChange} defaultValue="">
                                                         <FormControl>
-                                                            <SelectTrigger className="space-y-0 col-start-2 col-span-6">
-                                                                <SelectValue placeholder="Select Table" />
+                                                            <SelectTrigger className="space-y-0 w-2/3 bg-card border-none shadow-md">
+                                                                <SelectValue placeholder="Select Table"/>
                                                             </SelectTrigger>
                                                         </FormControl>
                                                         <SelectContent >
@@ -142,6 +201,7 @@ function Orders() {
                                                             }
                                                         </SelectContent>
                                                     </Select>
+                                                    <FormMessage className="text-[16px]"/>
                                                 </FormItem>
                                             )}
                                         />
@@ -149,7 +209,7 @@ function Orders() {
                                         <div className="p-5 flex flex-col gap-3">
                                             <Card
                                                 className="buttonsCon z-0 p-2 pl-3 w-full overflow-x-scroll flex gap-3 rounded-full">
-                                                <Button variant={selected === "All" ? "default" : "ghost"}
+                                                <Button variant={selected === "All" ? "default" : "ghost"} type="button"
                                                         className="px-8 rounded-full" onClick={() => setSelected("All")}
                                                 >All</Button>
                                                 {
@@ -157,59 +217,47 @@ function Orders() {
                                                         return <Button key={index}
                                                                        variant={category === selected ? "default" : "ghost"}
                                                                        className="px-8 rounded-full"
+                                                                       type="button"
                                                                        onClick={() => setSelected(category)}
                                                         >{category}</Button>
                                                     })
                                                 }
                                             </Card>
 
-                                            <div className="menu w-full grid grid-cols-3 p-5 gap-5 h-[400px] overflow-y-scroll">
-                                                {filteredMenu.map((product) => {
-                                                    const src = product.photo === "" ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXX6GrLiyiN5oDkH8Badn80xAnC5oAumGmchxXoF-b4H9ZDDOJ_iexVov_mSiLU9UCI0&usqp=CAU" : product.photo
-                                                    return (
-                                                        <Card className="p-[6px] aspect-square cursor-pointer" key={product.id} onClick={() => {
-                                                            setNewOrder(prevOrder =>
-                                                                [...prevOrder,
-                                                                    {name: product.name, price: product.price}])
-                                                            setAmount((prevAmount) => prevAmount + Number(product.price))
-                                                        }
-
-                                                        }>
-                                                            <div className="w-full h-44 rounded-[10px] overflow-hidden">
-                                                                <img src={src} alt="" className="w-full h-full"/>
-                                                            </div>
-                                                            <div className="flex justify-between p-3 font-[500]">
-                                                                <div>
-                                                                    {product.name}
-                                                                </div>
-                                                                <div className="text-[#1DBAFF]">
-                                                                    {product.price}₺
-                                                                </div>
-                                                            </div>
-                                                        </Card>
+                                            <div className="menu w-full grid grid-cols-3 p-5 gap-5 h-[60vh] overflow-y-scroll">
+                                                {filteredMenu.map((product) =>
+                                                    (<ProductCard key={product.id} price={product.price} name={product.name} photo={product.photo}/>
                                                     )
-                                                })}
+                                                )}
                                             </div>
 
                                         </div>
-                                        <DialogFooter>
-                                            <Button type="submit" className="mr-5">Confirm</Button>
+                                        <DialogFooter className="pr-5 flex gap-5">
+                                            <Button type="button" variant="ghost" onClick={()=> {
+                                                setAmount(0)
+                                                setNewOrder([])
+                                                setSelected("All")
+                                                document.querySelector(".dialogClose").click()
+                                            }
+                                            }>Cancel</Button>
+                                            <Button type="submit">Confirm</Button>
                                         </DialogFooter>
                                     </form>
                                 </Form>
                             </div>
                             <div className="flex-1 py-5 relative">
-                                <div className="max-h-[440px] overflow-y-scroll">
+                                <div className="max-h-[68vh] overflow-y-scroll">
                                     {
                                         newOrder.map((product,index) => {
                                             return (
-                                                <div key={index} className="flex border-b py-3">
-                                                    <div className="flex-[5]">{product.name}</div>
-                                                    <div
-                                                        className="flex-1 text-blue-600 font-[600]">{product.price}</div>
-                                                </div>)
-                                        }
-                                        )
+                                                <div key={index} className="flex border-b py-3 items-center">
+                                                    <div className="flex-[5]">{product.name} <span className="ml-3 text-blue-600 font-[500]">x{product.quantity}</span></div>
+                                                    <div className="flex-1 text-blue-600 font-[600]">{product.price}₺</div>
+                                                    <div className="pl-3 cursor-pointer" onClick={()=> {
+                                                        setNewOrder(newOrder.filter(item => item.name !== product.name))
+                                                        setAmount((prevAmount) => prevAmount - product.price)
+                                                    }}><TbX className="text-xl text-destructive" strokeWidth="3px"/></div>
+                                                </div>)})
                                     }
                                 </div>
 
@@ -225,17 +273,16 @@ function Orders() {
                     <Table>
                         <TableCaption>A List of Orders.</TableCaption>
                         <TableHeader className="text-[20px]">
-                            <TableRow>
-                                <TableHead className="text-center px-10">Table</TableHead>
-                                <TableHead className="text-center px-10">Price</TableHead>
-                                <TableHead className="text-center px-10">Price</TableHead>
-                                <TableHead className="text-center px-10">Order</TableHead>
-                                <TableHead className="text-center px-10">Status</TableHead>
-                                <TableHead className="text-center px-10"></TableHead>
+                            <TableRow >
+                                <TableHead className="text-center">Table</TableHead>
+                                <TableHead className="text-center">Price</TableHead>
+                                <TableHead className="text-center">Order</TableHead>
+                                <TableHead className="text-center">Status</TableHead>
+                                <TableHead className="text-center"></TableHead>
                                 <TableHead></TableHead>
                             </TableRow>
                         </TableHeader>
-                        <TableBody className="text-[14px] fon]">
+                        <TableBody className="text-[14px]">
                             {
                                 orders.map((order) => {
                                     let amount = 0
@@ -244,13 +291,44 @@ function Orders() {
                                         <TableRow key={order.id}>
                                         <TableCell className="text-center">{order.table}</TableCell>
                                             <TableCell className="text-center">{amount}</TableCell>
-                                            <TableCell className="text-center">SHOW</TableCell>
+                                            <TableCell className="text-center">
+                                                <Dialog>
+                                                    <DialogTrigger asChild>
+                                                        <Button variant="link" className="font-[600]">SHOW</Button>
+                                                    </DialogTrigger>
+                                                    <DialogContent className="max-w-[40vw]">
+                                                        <Table className="text-start">
+                                                            <TableHeader>
+                                                                <TableRow className="flex">
+                                                                    <TableHead className="text-start pl-8 flex-1">Name</TableHead>
+                                                                    <TableHead className="text-start flex-1">Quantity</TableHead>
+                                                                    <TableHead className="text-start flex-1">Unit Price</TableHead>
+                                                                    <TableHead className="text-start flex-1">Total Price</TableHead>
+                                                                </TableRow>
+                                                            </TableHeader>
+                                                            <TableBody>
+                                                                {
+                                                                    order.products.map((product)=> (
+                                                                        <TableRow key={product.id} className="flex">
+                                                                            <TableCell className="pl-8 flex-1 text-start" >{product.name}</TableCell>
+                                                                            <TableCell className="flex-1  text-start">{product.quantity}</TableCell>
+                                                                            <TableCell className="flex-1  text-start">{product.price / product.quantity}</TableCell>
+                                                                            <TableCell className="flex-1  text-start">{product.price}</TableCell>
+                                                                        </TableRow>
+                                                                    ))
+                                                                }
+                                                            </TableBody>
+                                                        </Table>
+
+                                                    </DialogContent>
+                                                </Dialog>
+                                            </TableCell>
                                             <TableCell className="text-center">{order.status}</TableCell>
                                             <TableCell className="text-end"><Button disabled={order.status === "Paid"}>Payment</Button></TableCell>
                                             <TableCell className="flex gap-5 justify-end items-center h-[53px]">
                                                 <Dialog>
                                                         <DialogTrigger asChild>
-                                                            <TbTrash className="text-2xl cursor-pointer"/>
+                                                            <TbTrash className="text-2xl cursor-pointer" onClick={() => setIdToDelete(order.id)}/>
                                                         </DialogTrigger>
                                                         <DialogContent className="sm:max-w-[425px]">
                                                             <DialogHeader>
@@ -260,7 +338,7 @@ function Orders() {
                                                                 Are You Sure You Want to Delete This Order?
                                                             </DialogDescription>
                                                             <DialogFooter>
-                                                                <Button variant="destructive">Delete</Button>
+                                                                <Button variant="destructive" onClick={deleteOrder}>Delete</Button>
                                                                 <Button variant="ghost"
                                                                         onClick={() => document.querySelector(".dialogClose").click()}>Cancel</Button>
                                                             </DialogFooter>

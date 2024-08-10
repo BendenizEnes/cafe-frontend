@@ -6,7 +6,7 @@ import {
     TbMoon,
     TbPower,
     TbSettings,
-    TbSun
+    TbSun, TbUser
 } from "react-icons/tb";
 import {Card} from "@/components/ui/card.jsx";
 import {Link} from "react-router-dom"
@@ -79,14 +79,15 @@ function Header() {
                             } } alt=""
                             className="rounded-full cursor-pointer"/>
                         <div
-                            className={`dropdown-menu absolute font-[500] top-12 border rounded-md text-sm right-0 text-card-foreground py-2 bg-card ${isDropdownActive ? "" : "hidden"}`}>
+                            className={`dropdown-menu absolute font-[500] top-12 border rounded-md text-sm right-0 text-card-foreground py-1 bg-card ${isDropdownActive ? "" : "hidden"}`}>
                             <div className="cursor-default w-48 h-14 text-start items-center mx-1 rounded">
                                 <div className="flex p-2 gap-[10px]">
                                     <div className=" w-10 relative">
                                         <img
                                             src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"
                                             alt="" className="rounded-full w-full"/>
-                                        <div className="absolute size-3 bg-green-600 rounded-full top-7 border-[#fff] dark:border-background border-2 right-0"></div>
+                                        <div
+                                            className="absolute size-3 bg-green-600 rounded-full top-7 border-[#fff] dark:border-background border-2 right-0"></div>
                                     </div>
                                     <div className="flex-col">
                                         <div className="text-[16px]">John Doe</div>
@@ -96,26 +97,32 @@ function Header() {
                             </div>
                             <div className="w-full h-[1px] mt-1 mb-1 border-b border-b-border"></div>
                             <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
-                                <Link to="/account/settings" className="pl-1 py-3 text-[15px] flex items-center">
-                                    <TbSettings  className="text-2xl mr-2"/>
-                                    <div>Settings</div>
-                                </Link>
-                            </div>
-                            <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
-                                <Link to="/account/security" className="pl-1 py-3 text-[15px] flex items-center">
-                                    <TbLock className="text-2xl mr-2"/>
-                                    <div className="">Security</div>
-                                </Link>
-                            </div>
-                            <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
-                                <Link to="/account/billing" className="pl-1 py-3 text-[15px] flex items-center">
+                                <Link to="/account/billing" className="pl-1 py-2 text-[15px] flex items-center">
                                     <TbCreditCard className="text-2xl mr-2"/>
                                     <div>Billing Plan</div>
                                 </Link>
                             </div>
+                            <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
+                                <Link to="/account/employees" className="pl-1 py-2 text-[15px] flex items-center">
+                                    <TbUser className="text-2xl mr-2"/>
+                                    <div>Employees</div>
+                                </Link>
+                            </div>
+                            <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
+                                <Link to="/account/settings" className="pl-1 py-2 text-[15px] flex items-center">
+                                    <TbSettings className="text-2xl mr-2"/>
+                                    <div>Settings</div>
+                                </Link>
+                            </div>
+                            <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
+                                <Link to="/account/security" className="pl-1 py-2 text-[15px] flex items-center">
+                                    <TbLock className="text-2xl mr-2"/>
+                                    <div className="">Security</div>
+                                </Link>
+                            </div>
                             <div className="w-full h-[1px] mt-1 mb-1 border-b border-b-border"></div>
                             <div className="hover:bg-accent w-48 text-start rounded items-center mx-1">
-                                <div className="pl-1 py-3 text-[15px] flex items-center cursor-pointer">
+                                <div className="pl-1 py-2 text-[15px] flex items-center cursor-pointer">
                                     <TbPower className="text-2xl mr-2"/>
                                     <div>Log Out</div>
                                 </div>

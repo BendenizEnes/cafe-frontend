@@ -56,8 +56,10 @@ function Settings() {
         <div className="rounded-xl flex flex-col gap-5 flex-[2.5]">
                     <div className="buttons w-full flex gap-5">
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/billing" className="flex items-center px-10 h-full"> Billing & Plans </Link></Button>
+                        <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/employees" className="flex items-center px-10 h-full">Employees </Link></Button>
                         <Button variant="default" className="p-0 h-10 overflow-hidden"><Link to="/account/settings" className="flex items-center px-10 h-full">Settings </Link></Button>
                         <Button variant="ghost" className="p-0 h-10 overflow-hidden"><Link to="/account/security" className="flex items-center px-10 h-full">Security </Link></Button>
+
                     </div>
                     <Card className="overflow-hidden h-full">
 

@@ -12,6 +12,7 @@ import Schedule from "@/pages/Schedule.jsx";
 import Menu from "@/pages/Menu.jsx";
 import Orders from "@/pages/Orders.jsx";
 import BookingList from "@/pages/BookingList.jsx";
+import WorkerList from "@/pages/WorkerList.jsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="settings" element={<Settings/>}></Route>
             <Route path="security" element={<Security/>}></Route>
             <Route path="billing" element={<Billing/>}></Route>
+            <Route path="employees" element={<WorkerList/>}></Route>
         </Route>
         <Route path="schedule" element={<Schedule/>}></Route>
         <Route path="reservations" element={<Reservations/>}>

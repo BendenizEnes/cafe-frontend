@@ -288,7 +288,7 @@ function BookingList(props) {
                                                         </DialogDescription>
                                                         <DialogFooter>
                                                             <Button variant="destructive">Delete</Button>
-                                                            <Button type={`button {/*submit*/}`} variant="ghost" onClick={() => document.querySelector(".dialogClose").click()}>Cancel</Button>
+                                                            <Button type={`button`} variant="ghost" onClick={() => document.querySelector(".dialogClose").click()}>Cancel</Button>
                                                         </DialogFooter>
                                                     </DialogContent>
                                                 </Dialog>

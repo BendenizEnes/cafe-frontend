@@ -10,23 +10,20 @@ function Reservations() {
             <main className="flex flex-col gap-5 w-full">
                 <div className="w-full flex gap-5">
                     <NavLink to="list" className="flex items-center h-full">
-                        <Button variant="ghost" className="h-10 px-8 overflow-hidden">
+                        <Button variant="ghost" className="h-10 px-8 hover:bg-primary hover:text-primary-foreground">
                             Reservation List
                         </Button>
                     </NavLink>
                     <NavLink to="tables" className="flex items-center h-full">
-                        <Button variant="ghost" className="h-10 px-8 overflow-hidden">
+                        <Button variant="ghost" className="h-10 px-8 hover:bg-primary hover:text-primary-foreground">
                            Tables
                         </Button>
                     </NavLink>
-
                 </div>
                 <div className="p-0 h-full">
                     <Outlet/>
                 </div>
-
             </main>
-
         </Layout>
     );
 }
