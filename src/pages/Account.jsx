@@ -7,7 +7,7 @@ import {Card} from "@/components/ui/card.jsx";
 function Account() {
     return (
         <Layout>
-            <main className="h-[622px] w-full flex flex-row gap-5">
+            <main className=" w-full flex flex-row gap-5">
                 <Card className="flex-1 flex flex-col items-center">
                     <div
                         className="profile pb-1 border-b border-b-border border-opacity-10 w-full flex flex-col items-center pt-3 gap-3">

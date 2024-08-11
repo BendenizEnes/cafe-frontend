@@ -1,15 +1,12 @@
-import {Input} from "@/components/ui/input.jsx";
 import Layout from "../components/ui/Layout.jsx";
 import {Button} from "../components/ui/button.jsx";
 import {Card, CardFooter} from "../components/ui/card.jsx";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "../components/ui/table.jsx";
 import { ChartContainer,ChartTooltip,ChartTooltipContent,ChartLegend, ChartLegendContent } from "../components/ui/chart"
-import {flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable} from "@tanstack/react-table";
 import {Area, Bar, BarChart, CartesianGrid, XAxis, AreaChart, YAxis, Label, Pie, PieChart,} from "recharts"
 import {TbArrowsUpDown, TbTrendingUp} from "react-icons/tb";
 import {MdRoomService} from "react-icons/md";
-import {useMemo, useState} from "react";
-import PropTypes from "prop-types";
+import {useMemo} from "react";
+import {DataTable} from "@/components/ui/DataTable.jsx";
 
 function Dashboard() {
 
@@ -67,348 +64,138 @@ function Dashboard() {
         return donutData.reduce((acc, curr) => acc + curr.visitors, 0)
     },[])
 
-    const users = [
-        {
-            name:"userName1",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName10",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"passive"
-        },
-        {
-            name:"userName11",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"active"
-        },
-        {
-            name:"userName20",
-            company:"companyName",
-            email:"emailexample@dom.com",
-            phone:"555 555 5555",
-            paymentMethod:"cash",
-            status:"passive"
-        },
+    const products = [
+        {name:"Cola",purchase:"1000",sell:"2500",stock:"100",status:"In Stock"},
+        {name:"Fanta",purchase:"1000",sell:"2500",stock:"10",status:"Low Stock"},
+        {name:"Ayran",purchase:"1200",sell:"2400",stock:"120",status:"In Stock"},
+        {name:"Ice Tea",purchase:"1500",sell:"4000",stock:"0",status:"Out of Stock"},
+        {name:"Juice",purchase:"800",sell:"1500",stock:"100",status:"In Stock"},
+        {name:"Cola",purchase:"1000",sell:"2500",stock:"100",status:"In Stock"},
+        {name:"Fanta",purchase:"1000",sell:"2500",stock:"10",status:"Low Stock"},
+        {name:"Ayran",purchase:"1200",sell:"2400",stock:"120",status:"In Stock"},
+        {name:"Ice Tea",purchase:"1500",sell:"4000",stock:"0",status:"Out of Stock"},
+        {name:"Juice",purchase:"800",sell:"1500",stock:"100",status:"In Stock"},
     ]
     const columns = [
         {
             accessorKey: "name",
             header: (({column}) =>
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Name <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
+                <div className="w-full flex justify-start">
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                        className="hover:bg-black hover:bg-opacity-5 font-[600] text-start pl-2"
+                    >
+                        Name <TbArrowsUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                </div>),
+            size:"20%"
         },
         {
-            accessorKey: "company",
+            accessorKey: "purchase",
             header: (({column}) =>
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Company <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
+                <div className="w-full flex justify-start">
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                        className="hover:bg-black hover:bg-opacity-5 font-[600] text-start pl-2"
+                    >
+                        Purchase <TbArrowsUpDown className="ml-2 h-4 w-4"/>
+                    </Button>
+                </div>),
+            size:"20%"
         },
         {
-            accessorKey: "email",
+            accessorKey: "sell",
             header: (({column}) =>
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Email <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
+                <div className="w-full flex justify-start">
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                        className="hover:bg-black hover:bg-opacity-5 font-[600] text-start pl-2"
+                    >
+                        Sell <TbArrowsUpDown className="ml-2 h-4 w-4"/>
+                    </Button>
+                </div>),
+            size:"20%"
         },
         {
-            accessorKey: "phone",
+            accessorKey: "stock",
             header: (({column}) =>
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Phone <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
-        },{
-            accessorKey: "paymentMethod",
-            header: (({column}) =>
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Payment Method <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
-        },
-        {
+                <div className="w-full flex justify-start">
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                        className="hover:bg-black hover:bg-opacity-5 font-[600] text-start pl-2"
+                    >
+                        Stock <TbArrowsUpDown className="ml-2 h-4 w-4"/>
+                    </Button>
+                </div>),
+            size:"20%",
+            cell:(({row}) => {
+                const stock = Number(row.getValue("stock"))
+                if (stock > 0 && stock <= 20) {
+                    return (
+                        <span className="text-[#efef22] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
+                                {stock}
+                        </span>
+                    )
+                } else if (stock === 0) {
+                    return (
+                        <span className="text-[#FF5511] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
+                                 {stock}
+                        </span>
+                    )
+                } else {
+                    return (
+                        <span className="text-[#44FF11] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
+                                 {stock}
+                        </span>
+                    )
+
+                }
+            })
+
+        }, {
             accessorKey: "status",
             header: (({column}) =>
+                <div className="w-full flex justify-start">
                 <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    className="w-full"
-                >
-                    Status <TbArrowsUpDown className="ml-2 h-4 w-4" />
-                </Button>),
-            cell:( ({row}) => {
-                    const status = row.getValue("status")
-                if(status === "active"){
-                    return(
-                        <span className="text-[#4fcb9e] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
-                            &#x2022; {status}
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                        className="hover:bg-black hover:bg-opacity-5 font-[600] text-start pl-2"
+                    >
+                        Status <TbArrowsUpDown className="ml-2 h-4 w-4"/>
+                    </Button>
+                </div>),
+            size:"20%",
+            cell:(({row}) => {
+                const status = row.getValue("status")
+                if (status === "Low Stock") {
+                    return (
+                        <span className="text-[#efef22] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
+                                {status}
                         </span>
                     )
-                }else{
-                    return(
-                        <span className="text-[#FF4A4A] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
-                            &#x2022; {status}
+                } else if (status === "Out of Stock") {
+                    return (
+                        <span className="text-[#FF5511] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
+                                 {status}
                         </span>
                     )
+                } else {
+                    return (
+                        <span className="text-[#44FF11] font-[700] text-[15px] px-2 py-1 rounded-2xl text-center">
+                                 {status}
+                        </span>
+                    )
+
                 }
             })
         },
-
-
     ]
 
-    function UserTable ({data,columns}){
-
-        const [sorting, setSorting] = useState([])
-        const [columnFilters, setColumnFilters] = useState([])
-
-        const table = useReactTable({
-            data,
-            columns,
-            getCoreRowModel: getCoreRowModel(),
-            getPaginationRowModel: getPaginationRowModel(),
-            onSortingChange: setSorting,
-            getSortedRowModel: getSortedRowModel(),
-            state: {
-                sorting,
-                columnFilters
-            },
-            onColumnFiltersChange: setColumnFilters,
-            getFilteredRowModel: getFilteredRowModel(),
-        })
-        return (
-            <div>
-                <div className="flex items-center gap-5 px-5 py-4">
-                    <Input placeholder="Filter names..."  className="flex-1" value={(table.getColumn("name")?.getFilterValue()) ?? ""} onChange={(event) =>
-                        table.getColumn("name")?.setFilterValue(event.target.value)}/>
-                    <Input placeholder="Filter company..."  className="flex-1" value={(table.getColumn("company")?.getFilterValue()) ?? ""} onChange={(event) =>
-                        table.getColumn("company")?.setFilterValue(event.target.value)}/>
-                    <Input placeholder="Filter email..."  className="flex-1" value={(table.getColumn("email")?.getFilterValue()) ?? ""} onChange={(event) =>
-                        table.getColumn("email")?.setFilterValue(event.target.value)}/>
-                    <Input placeholder="Filter phone..."  className="flex-1" value={(table.getColumn("phone")?.getFilterValue()) ?? ""} onChange={(event) =>
-                        table.getColumn("phone")?.setFilterValue(event.target.value)}/>
-
-                </div>
-
-                <div className="rounded-md">
-                    <Table>
-                        <TableHeader>
-                            {table.getHeaderGroups().map((headerGroup) => (
-                                <TableRow key={headerGroup.id}>
-                                    {headerGroup.headers.map((header) => {
-                                        return (
-                                            <TableHead key={header.id}>
-                                                {header.isPlaceholder
-                                                    ? null
-                                                    : flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
-
-                                            </TableHead>
-                                        )
-                                    })}
-                                </TableRow>
-                            ))}
-                        </TableHeader>
-                        <TableBody>
-                            {table.getRowModel().rows?.length ? (
-                                table.getRowModel().rows.map((row) => (
-                                    <TableRow
-                                        key={row.id}
-                                        data-state={row.getIsSelected() && "selected"}
-                                    >
-                                        {row.getVisibleCells().map((cell) => (
-                                            <TableCell key={cell.id}>
-                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                            </TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell colSpan={columns.length} className="h-24 text-center">
-                                        No results.
-                                    </TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                    <div
-                        className="flex items-center justify-end absolute bottom-0 left-0 right-0  pr-5 pt-6 pb-6 gap-3">
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => table.previousPage()}
-                            disabled={!table.getCanPreviousPage()}
-                        >
-                            Previous
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => table.nextPage()}
-                            disabled={!table.getCanNextPage()}
-                        >
-                            Next
-                        </Button>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    function InfoCards({icon, title, variant, children}) {
+    function InfoCards({icon = (<MdRoomService/>), title, variant, children}) {
         const CardVariant = {
             primary: {
                 textCol: "text-[#54CCA1]",
@@ -442,16 +229,6 @@ function Dashboard() {
                 </div>
             </Card>
         );
-    }
-    InfoCards.propTypes = {
-        title: PropTypes.string.isRequired,
-        icon: PropTypes.element,
-        children : PropTypes.node,
-        variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary',"quaternary","default"]),
-    };
-    InfoCards.defaultProps = {
-        icon:<MdRoomService/>,
-        variant : "default"
     }
 
     return (
@@ -555,7 +332,7 @@ function Dashboard() {
                     </CardFooter>
                 </Card>
                 <Card className="col-start-2 col-span-3 row-start-4 row-span-4 text-center relative p-0">
-                    <UserTable columns={columns} data={users} className="h-full"/>
+                    <DataTable columns={columns} data={products} filters={["name"]} className="text-start"/>
                 </Card>
             </main>
         </Layout>

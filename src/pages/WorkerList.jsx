@@ -32,7 +32,8 @@ function WorkerList() {
             header:({ column }) => {
                 return (
                     <div className="w-full flex justify-start">
-                        <Button variant="ghost" className="font-[600] text-start pl-2" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+                        <Button variant="ghost" className="font-[600] text-start pl-2 hover:bg-black hover:bg-opacity-5"
+                                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
                             Name<TbArrowsUpDown className="ml-2 h-4 w-4"/>
                         </Button>
                     </div>
@@ -46,7 +47,7 @@ function WorkerList() {
             header:({ column }) => {
                 return (
                     <div className="w-full flex justify-start">
-                        <Button variant="ghost" className="font-[600] text-start pl-2"
+                        <Button variant="ghost" className="font-[600] text-start pl-2 hover:bg-black hover:bg-opacity-5"
                                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
                             Email<TbArrowsUpDown className="ml-2 h-4 w-4"/>
                         </Button>
@@ -59,7 +60,7 @@ function WorkerList() {
             header: ({column}) => {
                 return (
                     <div className="w-full flex justify-start">
-                        <Button variant="ghost" className="font-[600] text-start pl-2"
+                        <Button variant="ghost" className="font-[600] text-start pl-2 hover:bg-black hover:bg-opacity-5"
                                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
                             Phone<TbArrowsUpDown className="ml-2 h-4 w-4"/>
                         </Button>
@@ -72,7 +73,7 @@ function WorkerList() {
             header: ({column}) => {
                 return (
                     <div className="w-full flex justify-start">
-                        <Button variant="ghost" className="font-[600] text-start pl-2"
+                        <Button variant="ghost" className="font-[600] text-start pl-2 hover:bg-black hover:bg-opacity-5"
                                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
                             Job Title<TbArrowsUpDown className="ml-2 h-4 w-4"/>
                         </Button>
@@ -143,64 +144,64 @@ function WorkerList() {
                     </Link>
                 </Button>
             </div>
-            <Card className="h-full pb-0 relative z-0">
+            <Card className="h-full pb-0 relative z-0 p-0">
                 <div className="absolute left-0 bottom-0 p-5 z-[5]">
                     <Button variant="default" onClick={() => {setActiveAddModal(true)}}>Add New Employee</Button>
                 </div>
                 <div className="w-full h-full">
-                    <DataTable columns={columns} data={workers} filters={["name","Job Title"]}/>
+                    <DataTable columns={columns} data={workers} filters={["name","Job Title"]} className="text-start"/>
                 </div>
-                <Dialog open={activeAddModal} onOpenChange={setActiveAddModal}>
-                    <DialogContent className="sm:max-w-[475px]">
-                        <DialogHeader>
-                            <DialogTitle>Add New Employee</DialogTitle>
-                        </DialogHeader>
-                        <Form {...form}>
-                            <form onSubmit={form.handleSubmit(addNewEmployee)} className="flex flex-col gap-5 pt-5">
-                                <FormField control={form.control} name="name" render={({ field }) => (
-                                    <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
-                                        <FormLabel className="text-end col-span-1">Name</FormLabel>
-                                        <FormControl>
-                                            <Input {...field} className="space-y-0 col-span-4"/>
-                                        </FormControl>
-                                        <FormMessage className="row-start-2 col-start-2 col-span-4"/>
-                                    </FormItem>
-                                )} />
-                                <FormField control={form.control} name="email" render={({field}) => (
-                                    <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
-                                        <FormLabel className="text-end col-span-1">Email</FormLabel>
-                                        <FormControl>
-                                            <Input {...field} className="space-y-0 col-span-4"/>
-                                        </FormControl>
-                                        <FormMessage className="row-start-2 col-start-2 col-span-4"/>
-                                    </FormItem>
-                                )} />
-                                <FormField control={form.control} name="phone" render={({field}) => (
-                                    <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
-                                        <FormLabel className="text-end col-span-1">Phone</FormLabel>
-                                        <FormControl>
-                                            <Input {...field} className="space-y-0 col-span-4"/>
-                                        </FormControl>
-                                        <FormMessage className="row-start-2 col-start-2 col-span-4"/>
-                                    </FormItem>
-                                )} />
-                                <FormField control={form.control} name="Job Title" render={({field}) => (
-                                    <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
-                                        <FormLabel className="text-end col-span-1">Job Title</FormLabel>
-                                        <FormControl>
-                                            <Input {...field} className="space-y-0 col-span-4"/>
-                                        </FormControl>
-                                        <FormMessage className="row-start-2 col-start-2 col-span-4"/>
-                                    </FormItem>
-                                )} />
-                                <DialogFooter>
-                                    <Button type="submit">Add New Employee</Button>
-                                </DialogFooter>
-                            </form>
-                        </Form>
-                    </DialogContent>
-                </Dialog>
             </Card>
+            <Dialog open={activeAddModal} onOpenChange={setActiveAddModal}>
+            <DialogContent className="sm:max-w-[475px]">
+                <DialogHeader>
+                    <DialogTitle>Add New Employee</DialogTitle>
+                </DialogHeader>
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(addNewEmployee)} className="flex flex-col gap-5 pt-5">
+                        <FormField control={form.control} name="name" render={({ field }) => (
+                            <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
+                                <FormLabel className="text-end col-span-1">Name</FormLabel>
+                                <FormControl>
+                                    <Input {...field} className="space-y-0 col-span-4"/>
+                                </FormControl>
+                                <FormMessage className="row-start-2 col-start-2 col-span-4"/>
+                            </FormItem>
+                        )} />
+                        <FormField control={form.control} name="email" render={({field}) => (
+                            <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
+                                <FormLabel className="text-end col-span-1">Email</FormLabel>
+                                <FormControl>
+                                    <Input {...field} className="space-y-0 col-span-4"/>
+                                </FormControl>
+                                <FormMessage className="row-start-2 col-start-2 col-span-4"/>
+                            </FormItem>
+                        )} />
+                        <FormField control={form.control} name="phone" render={({field}) => (
+                            <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
+                                <FormLabel className="text-end col-span-1">Phone</FormLabel>
+                                <FormControl>
+                                    <Input {...field} className="space-y-0 col-span-4"/>
+                                </FormControl>
+                                <FormMessage className="row-start-2 col-start-2 col-span-4"/>
+                            </FormItem>
+                        )} />
+                        <FormField control={form.control} name="Job Title" render={({field}) => (
+                            <FormItem className="grid h-12 grid-cols-5 grid-rows-2 gap-3 items-center">
+                                <FormLabel className="text-end col-span-1">Job Title</FormLabel>
+                                <FormControl>
+                                    <Input {...field} className="space-y-0 col-span-4"/>
+                                </FormControl>
+                                <FormMessage className="row-start-2 col-start-2 col-span-4"/>
+                            </FormItem>
+                        )} />
+                        <DialogFooter>
+                            <Button type="submit">Add New Employee</Button>
+                        </DialogFooter>
+                    </form>
+                </Form>
+            </DialogContent>
+        </Dialog>
         </div>
     );
 }

@@ -13,6 +13,7 @@ import Menu from "@/pages/Menu.jsx";
 import Orders from "@/pages/Orders.jsx";
 import BookingList from "@/pages/BookingList.jsx";
 import WorkerList from "@/pages/WorkerList.jsx";
+import Users from "@/pages/Users.jsx";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         </Route>
         <Route path="menu" element={<Menu/>}></Route>
         <Route path="orders" element={<Orders/>}></Route>
+        <Route path="users" element={<Users/>}></Route>
     </Routes>
   )
 }

@@ -8,7 +8,7 @@ function Layout({children, ...rest}) {
         <div {...rest}>
             <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
                 <Header/>
-                <div className="flex gap-5 flex-row mt-[100px] min-h-[622px] m-5">
+                <div className="flex gap-5 flex-row mt-[90px] min-h-[632px] m-5">
                     <Sidebar/>
                     {children}
                 </div>

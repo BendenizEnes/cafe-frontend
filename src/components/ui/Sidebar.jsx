@@ -7,7 +7,7 @@ import {
     TbChevronLeft,
     TbChevronRight,
     TbLayoutGrid,
-    TbNotes
+    TbNotes, TbUser
 } from "react-icons/tb";
 import { useState} from "react";
 
@@ -76,6 +76,12 @@ function Sidebar() {
             name: "Orders",
             icon: <TbNotes className="dark:text-white"/>,
             url:"/orders"
+        },
+        {
+            id: 7,
+            name: "Users",
+            icon: <TbUser className="dark:text-white"/>,
+            url:"/users"
         },
     ];
 
